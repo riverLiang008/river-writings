@@ -1,0 +1,13 @@
+{
+  "name": "river-writings",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.9.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "pnpm --dir site dev",
+    "build": "pnpm --dir site build",
+    "check": "pnpm --dir site check",
+    "preview": "pnpm --dir site preview"
+  }
+}

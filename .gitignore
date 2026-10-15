@@ -1,0 +1,17 @@
+node_modules/
+.pnpm-store/
+site/.generated/
+site/.vitepress/cache/
+site/.vitepress/.temp/
+site/.vitepress/dist/
+.obsidian/
+.env
+.env.*
+!.env.example
+*.log
+
+# Local manuscripts and editorial material; never include in site commits.
+/sources/
+/content/
+/editorial/
+/REPOSITORY-PRINCIPLES.local.md

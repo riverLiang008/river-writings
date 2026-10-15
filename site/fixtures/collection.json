@@ -1,0 +1,12 @@
+{
+  "id": "demo",
+  "title": "沿着河岸走",
+  "description": "两篇虚构的阅读样本，用来试读文字的宽度、节奏与章节之间的衔接。",
+  "edition": "sample-v1",
+  "language": "zh-CN",
+  "fictional": true,
+  "entries": [
+    { "id": "morning", "title": "清晨的河岸", "file": "morning.md" },
+    { "id": "window", "title": "窗边的片刻", "file": "window.md" }
+  ]
+}

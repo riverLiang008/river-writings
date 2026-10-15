@@ -1,0 +1,19 @@
+{
+  "name": "@river/site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "dev": "pnpm generate && vitepress dev --host 127.0.0.1",
+    "build": "pnpm generate && vitepress build && node scripts/check-output.mjs",
+    "check": "pnpm generate && vue-tsc --noEmit",
+    "preview": "vitepress preview --host 127.0.0.1"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.4",
+    "vue": "^3.5.0",
+    "typescript": "^5.9.0",
+    "vue-tsc": "^3.1.0",
+    "@types/node": "^24.0.0"
+  }
+}
