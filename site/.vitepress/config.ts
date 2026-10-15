@@ -27,6 +27,6 @@ export default defineConfig({
         footer: { selectText: '选择', navigateText: '切换', closeText: '关闭' } }
     } } } } },
     docFooter: { prev: '上一篇', next: '下一篇' },
-    footer: { message: 'AN INDEPENDENT WRITING ARCHIVE', copyright: '© 2026 RIVER · 虚构阅读样本' }
+    footer: { copyright: '© 2026 RIVER' }
   }
 })
