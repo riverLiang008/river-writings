@@ -1,0 +1,50 @@
+{
+  "id": "a-cloud",
+  "title": "天空中飘来一朵云",
+  "edition": "selected-v1",
+  "language": "zh-CN",
+  "entries": [
+    {
+      "id": "sleepwalker",
+      "title": "一个梦游者的自述",
+      "date": "2025.03.24",
+      "file": "sleepwalker.md",
+      "sha256": "7ac23753d2647f79f41abf94d9f2a989b53ee19a57e1100699e2c8f57742236e"
+    },
+    {
+      "id": "nothing-happened",
+      "title": "什么都没发生的一天",
+      "date": "2025.01.30–2025.06.25",
+      "file": "nothing-happened.md",
+      "sha256": "3da15006b5f4dcc6d64ccb345be6be20a0e1a8d7b062e9ea107b25aa0a56dfda"
+    },
+    {
+      "id": "blue-bicycle",
+      "title": "十二点的蓝色自行车",
+      "date": "2024.05.04",
+      "file": "blue-bicycle.md",
+      "sha256": "067c8b767180986a0e767e44b9fbda3795ce9d3b6fd0b06d42d58a4afa7fae37"
+    },
+    {
+      "id": "thought-and-thought",
+      "title": "思想如何谋杀思想",
+      "date": "2023.12.20",
+      "file": "thought-and-thought.md",
+      "sha256": "cc3a9dbc31081dfeed5787f875c648df9ee6e29f8c2c893305434df6f7987413"
+    },
+    {
+      "id": "arrogance-of-advice",
+      "title": "劝导的傲慢",
+      "date": "2023.12.10",
+      "file": "arrogance-of-advice.md",
+      "sha256": "f2ffdcc5ed2f9973aec8002819bd6e0dd500090e9305af1453cc4b9876a8c2e0"
+    },
+    {
+      "id": "reading-and-existence",
+      "title": "不为表演的阅读，不为理解的存在",
+      "date": "2024.04.23",
+      "file": "reading-and-existence.md",
+      "sha256": "d119ed58ae02cafeb72c4503c937c059c6c48cf3e47372091a027b3bd28c2870"
+    }
+  ]
+}

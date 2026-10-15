@@ -11,7 +11,7 @@ const { frontmatter } = useData()
     <template #doc-before>
       <div v-if="frontmatter.collectionTitle" class="reading-context">
         <a :href="withBase(frontmatter.collectionLink)">{{ frontmatter.collectionTitle }}</a>
-        <span>虚构阅读样本 · 中文</span>
+        <span>{{ frontmatter.originalDate || '虚构阅读样本' }} · 中文</span>
         <details class="chapter-menu">
           <summary>作品目录</summary>
           <ol>

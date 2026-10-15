@@ -1,5 +1,5 @@
 ﻿<script setup lang="ts">
-import { useData } from 'vitepress'
+import { useData, withBase } from 'vitepress'
 const { frontmatter } = useData()
 const collections = [
   { id: 'a-cloud', title: '天空中飘来一朵云' },
@@ -22,7 +22,7 @@ const collections = [
       <div class="collection-grid">
         <article v-for="(collection, index) in collections" :key="collection.id" class="archive-card work-shelf" :class="{ 'shelf-wide': [0, 3, 4].includes(index) }">
           <div class="card-meta"><span>{{ String(index + 1).padStart(3, '0') }} / COLLECTION</span></div>
-          <div class="card-title"><h3>{{ collection.title }}</h3></div>
+          <div class="card-title"><h3><a v-if="collection.id === 'a-cloud'" :href="withBase('/zh/literature/a-cloud/')">{{ collection.title }} ↗</a><template v-else>{{ collection.title }}</template></h3></div>
         </article>
       </div>
     </section>

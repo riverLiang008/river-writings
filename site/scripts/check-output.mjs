@@ -4,7 +4,8 @@ import { fileURLToPath } from 'node:url'
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../.vitepress/dist')
 const expected = ['index.html', 'en/index.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
   'zh/literature/demo/index.html', 'zh/literature/demo/editions/sample-v1/morning.html',
-  'zh/literature/demo/editions/sample-v1/window.html']
+  'zh/literature/demo/editions/sample-v1/window.html', 'zh/literature/a-cloud/index.html',
+  ...['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought', 'arrogance-of-advice', 'reading-and-existence'].map(id => `zh/literature/a-cloud/editions/selected-v1/${id}.html`)]
 async function walk(path, prefix = '') {
   const results = []
   for (const item of await readdir(path, { withFileTypes: true })) {
