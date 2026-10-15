@@ -9,42 +9,42 @@
       "title": "一个梦游者的自述",
       "date": "2025.03.24",
       "file": "sleepwalker.md",
-      "sha256": "7ac23753d2647f79f41abf94d9f2a989b53ee19a57e1100699e2c8f57742236e"
+      "sha256": "cf4add8320d8097a51a0ec523b4b0e942c5c9b440b25ab5511f79844caa90b50"
     },
     {
       "id": "nothing-happened",
       "title": "什么都没发生的一天",
       "date": "2025.01.30–2025.06.25",
       "file": "nothing-happened.md",
-      "sha256": "3da15006b5f4dcc6d64ccb345be6be20a0e1a8d7b062e9ea107b25aa0a56dfda"
+      "sha256": "a6ced78db0398992165a3240f5c762f8a3d4cd58b7d35df60b3c68ed1e2ce150"
     },
     {
       "id": "blue-bicycle",
       "title": "十二点的蓝色自行车",
       "date": "2024.05.04",
       "file": "blue-bicycle.md",
-      "sha256": "067c8b767180986a0e767e44b9fbda3795ce9d3b6fd0b06d42d58a4afa7fae37"
+      "sha256": "f60fea4d01b9252ec8682e7afbd73152abc2391223e5b843a17108435fbbc9f1"
     },
     {
       "id": "thought-and-thought",
       "title": "思想如何谋杀思想",
       "date": "2023.12.20",
       "file": "thought-and-thought.md",
-      "sha256": "cc3a9dbc31081dfeed5787f875c648df9ee6e29f8c2c893305434df6f7987413"
+      "sha256": "ad50741d0ac12a1cb0ee74351f852056a076f29c89c3b32c3c8da6756a425673"
     },
     {
       "id": "arrogance-of-advice",
       "title": "劝导的傲慢",
       "date": "2023.12.10",
       "file": "arrogance-of-advice.md",
-      "sha256": "f2ffdcc5ed2f9973aec8002819bd6e0dd500090e9305af1453cc4b9876a8c2e0"
+      "sha256": "4bb4c36ab5847be8e8e9e63808d07c312d65362de5c2d57a22e21f50fec9e7c0"
     },
     {
       "id": "reading-and-existence",
       "title": "不为表演的阅读，不为理解的存在",
       "date": "2024.04.23",
       "file": "reading-and-existence.md",
-      "sha256": "d119ed58ae02cafeb72c4503c937c059c6c48cf3e47372091a027b3bd28c2870"
+      "sha256": "98ae8a148f17598bd0b81c7427650a3b82ba0d2c0b537e7a888bd41191ba42ce"
     }
   ]
 }

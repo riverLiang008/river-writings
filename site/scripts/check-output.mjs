@@ -25,4 +25,17 @@ for (const path of files) {
     if (/SSTM_Original|Agency_Dynamic_Original|River_Editorial_|sources\/materials|sources\/pdf/.test(text)) throw new Error(`Internal material reference in ${path}`)
   }
 }
-console.log(`Verified ${html.length} sample pages and build artifact boundaries.`)
+for (const [id, noteCount] of Object.entries({ sleepwalker: 4, 'nothing-happened': 1, 'blue-bicycle': 0, 'thought-and-thought': 7, 'arrogance-of-advice': 2, 'reading-and-existence': 2 })) {
+  const text = await readFile(resolve(output, `zh/literature/a-cloud/editions/selected-v1/${id}.html`), 'utf8')
+  if (/FOOTREF|原注 ·|&lt;sup/.test(text)) throw new Error(`Unconverted reading markup: ${id}`)
+  for (let n = 1; n <= noteCount; n++) {
+    for (const marker of [`id="note-${n}"`, `id="ref-${n}"`, `href="#note-${n}"`, `href="#ref-${n}"`]) {
+      if (text.split(marker).length !== 2) throw new Error(`Missing or duplicate note link ${marker}: ${id}`)
+    }
+  }
+  if (id === 'nothing-happened') {
+    const poem = text.match(/<div class="poem">([\s\S]*?)<\/div>/)?.[1]
+    if (!poem || (poem.match(/<br\s*\/?>/g) || []).length !== 3) throw new Error('Expected four poem lines')
+  }
+}
+console.log(`Verified ${html.length} pages, 16 reciprocal footnotes, four poem lines and build boundaries.`)

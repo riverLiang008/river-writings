@@ -125,3 +125,43 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--vp-c-brand-1);
 .source-notes p { font-size: 14px; line-height: 1.9; }
 .source-notes span { font-family: var(--vp-font-family-base); font-size: 11px; display: block; margin-bottom: 8px; }
 .chapter-subtitle { color: var(--vp-c-text-2); }
+
+/* Reading column: 784px container less 64px padding = 720px of text. */
+:root { --vp-c-bg: #f8fafc; --vp-c-text-1: #252b32; }
+.dark { --vp-c-bg: #171c23; --vp-c-text-1: #e0e6ed; }
+.VPDoc:not(.has-sidebar) .content { max-width: 784px !important; }
+.VPDoc:not(.has-sidebar) .container { max-width: 100%; }
+.VPDoc .content-container { max-width: 720px; }
+.vp-doc { font-size: 18px; }
+.vp-doc p { line-height: 1.95; margin: 1.2em 0; }
+.vp-doc h1 { margin-bottom: 1em; }
+.vp-doc .chapter-preface { border-left: 1px solid var(--vp-c-divider); padding-left: 20px; margin: 30px 0 40px; color: var(--vp-c-text-2); font-size: 16px; }
+.vp-doc .chapter-preface p { font-style: normal; line-height: 1.95; }
+.vp-doc blockquote { font-size: 17px; border-left: 2px solid var(--vp-c-divider); padding: 0 20px; margin: 30px 0; color: var(--vp-c-text-2); }
+.vp-doc blockquote p { color: inherit; }
+.vp-doc .poem { margin: 32px 0 40px; padding-left: 1em; }
+.vp-doc .poem p { line-height: 2.2; }
+.note-ref { font-family: var(--vp-font-family-base); font-size: .67em; line-height: 0; vertical-align: super; margin: 0 .12em; }
+.note-ref a { text-decoration: none; }
+.source-notes { margin-top: 56px; padding-top: 0; }
+.vp-doc .source-notes h2 { border: 0; margin: 24px 0 18px; padding: 0; font-size: 20px; }
+.source-notes li { padding-left: 6px; }
+.source-notes li p { font-size: 14px; line-height: 1.9; margin: 12px 0; overflow-wrap: anywhere; }
+.note-back { white-space: nowrap; padding: 4px 8px; }
+[id^='note-'], [id^='ref-'] { scroll-margin-top: 100px; }
+[id^='note-']:target { background: var(--vp-c-bg-soft); }
+.collection-book .collection-label, .collection-book .collection-info { font-family: var(--vp-font-family-base); color: var(--vp-c-text-2); font-size: 12px; }
+.collection-book .collection-label { letter-spacing: .12em; margin-bottom: 24px; }
+.collection-book .contents-title { font-family: var(--vp-font-family-base); font-size: 12px; letter-spacing: .08em; border: 0; padding: 0; margin: 48px 0 20px; }
+.vp-doc .book-contents { list-style: none; padding: 0; }
+.book-contents li { margin: 0; }
+.book-contents a { display: grid; grid-template-columns: 36px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--vp-c-divider); text-decoration: none; font-weight: 400; color: var(--vp-c-text-1); }
+.book-contents a > span:first-child { font-family: var(--vp-font-family-base); font-size: 11px; color: var(--vp-c-text-2); }
+.reading-context { border-bottom: 0; padding-bottom: 0; margin-bottom: 28px; }
+.VPDocFooter .pager-link { min-height: 88px; }
+@media (max-width: 640px) {
+  .vp-doc { font-size: 17px; }
+  .vp-doc .chapter-preface { font-size: 15px; padding-left: 16px; }
+  .vp-doc blockquote { font-size: 16px; padding: 0 16px; }
+  .vp-doc .poem { padding-left: 0; font-size: 16px; }
+}

@@ -65,12 +65,20 @@ const allowed = ['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and
 if (release.id !== 'a-cloud' || release.edition !== 'selected-v1' || release.entries.length !== allowed.length || release.entries.some((entry, index) => entry.id !== allowed[index] || entry.file !== `${entry.id}.md`)) throw new Error('Unexpected cloud release scope')
 const cloudRoot = '/zh/literature/a-cloud/'
 const cloudChapters = release.entries.map(entry => ({ ...entry, link: `${cloudRoot}editions/${release.edition}/${entry.id}` }))
-add('zh/literature/a-cloud/index.md', { title: release.title }, `# ${release.title}\n\n## 目录\n\n${cloudChapters.map((entry, index) => `${index + 1}. [${entry.title}](${entry.link})`).join('\n')}`)
+add('zh/literature/a-cloud/index.md', { title: release.title, aside: false, outline: false }, `<div class="collection-book">
+<p class="collection-label">COLLECTION 001</p>
+
+# ${release.title}
+
+<p class="collection-info">???? ? ?? / ${cloudChapters.length} ?</p>
+<h2 class="contents-title">?? / CONTENTS</h2>
+<ol class="book-contents">${cloudChapters.map((entry, index) => `<li><a href="${process.env.SITE_BASE ? process.env.SITE_BASE.slice(0, -1) : ''}${entry.link}"><span>${String(index + 1).padStart(2, '0')}</span><span>${entry.title}</span></a></li>`).join('')}</ol>
+</div>`)
 for (const [index, entry] of cloudChapters.entries()) {
   const text = await readFile(resolve(releaseDir, entry.file), 'utf8')
   if (createHash('sha256').update(text).digest('hex') !== entry.sha256 || !text.startsWith(`# ${entry.title}\n`) || /等待戈多的人都该死|<script|<iframe|@include|\{\{/.test(text)) throw new Error('Release content failed validation')
   const neighbor = offset => cloudChapters[index + offset] ? { text: cloudChapters[index + offset].title, link: cloudChapters[index + offset].link } : false
-  add(`${entry.link.slice(1)}.md`, { title: entry.title, collectionTitle: release.title, collectionLink: cloudRoot, originalDate: entry.date, chapters: cloudChapters.map(({ title, link }) => ({ title, link })), prev: neighbor(-1), next: neighbor(1) }, text)
+  add(`${entry.link.slice(1)}.md`, { title: entry.title, collectionTitle: release.title, collectionLink: cloudRoot, originalDate: entry.date, aside: false, outline: false, chapters: cloudChapters.map(({ title, link }) => ({ title, link })), prev: neighbor(-1), next: neighbor(1) }, text)
 }
 pages.set('zh/literature/index.md', `---\ntitle: 文学作品\n---\n\n# 文学作品\n\n[${release.title}](${cloudRoot})\n`)
 for (const [path, text] of pages) {
