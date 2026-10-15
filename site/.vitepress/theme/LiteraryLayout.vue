@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme'
 import { useData, withBase } from 'vitepress'
+import ArchiveHome from './ArchiveHome.vue'
 const { frontmatter } = useData()
 </script>
 
 <template>
   <DefaultTheme.Layout>
+    <template #home-hero-before><ArchiveHome v-if="frontmatter.archiveCollection" /></template>
     <template #doc-before>
       <div v-if="frontmatter.collectionTitle" class="reading-context">
         <a :href="withBase(frontmatter.collectionLink)">{{ frontmatter.collectionTitle }}</a>

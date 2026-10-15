@@ -5,7 +5,7 @@ if (!base.startsWith('/') || !base.endsWith('/')) throw new Error('SITE_BASE mus
 
 export default defineConfig({
   title: 'River · 文学作品',
-  description: '作品、片段与缓慢阅读。',
+  description: 'River 的文学档案：以辑为线索，沿着文字阅读。',
   lang: 'zh-CN',
   srcDir: '.generated',
   base,
@@ -14,10 +14,10 @@ export default defineConfig({
   lastUpdated: false,
   themeConfig: {
     logo: undefined,
-    siteTitle: 'River',
+    siteTitle: 'RIVER',
     nav: [
-      { text: '文学作品', link: '/zh/literature/' },
-      { text: '关于', link: '/zh/about' }
+      { text: '作品目录 / ARCHIVE', link: '/zh/literature/' },
+      { text: '关于 / ABOUT', link: '/zh/about' }
     ],
     sidebar: [],
     outline: false,
@@ -27,6 +27,6 @@ export default defineConfig({
         footer: { selectText: '选择', navigateText: '切换', closeText: '关闭' } }
     } } } } },
     docFooter: { prev: '上一篇', next: '下一篇' },
-    footer: { message: '文字之间，留一点空白。', copyright: 'River · 本地阅读样本' }
+    footer: { message: 'AN INDEPENDENT WRITING ARCHIVE', copyright: '© 2026 RIVER · 虚构阅读样本' }
   }
 })

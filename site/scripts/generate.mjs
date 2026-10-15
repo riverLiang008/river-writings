@@ -39,11 +39,7 @@ function add(path, metadata, body) {
 }
 add('index.md', {
   layout: 'home',
-  hero: { name: 'River', text: '把时间，留在文字里。', tagline: '诗、故事与日常的片刻。沿着一部作品慢慢读，也在文字之间停一停。', actions: [
-    { theme: 'brand', text: '浏览文学作品', link: '/zh/literature/' },
-    { theme: 'alt', text: '开始试读', link: chapters[0].link }
-  ] },
-  features: [{ title: collection.title, details: collection.description, link: root, linkText: '打开作品目录' }]
+  archiveCollection: { title: collection.title, link: root, entries: chapters.map(({ title, link }) => ({ title, link })) }
 }, '')
 add('zh/literature/index.md', { title: '文学作品' }, `# 文学作品\n\n以作品集为起点，沿着章节阅读。\n\n## [${collection.title}](${root})\n\n${collection.description}\n\n虚构样本 · ${chapters.length} 篇 · 中文\n\n[开始阅读 →](${chapters[0].link})\n\n---\n\n当前是网站阅读样本，正式作品将在整理和确认后加入。`)
 add('zh/about.md', { title: '关于' }, '# 关于\n\n这里是 River 的文学作品阅读空间。作品将以书籍、作品集和系列的方式呈现，让每一篇文字保留它所在的语境。\n\n目前开放的是虚构阅读样本。作者介绍与正式作品将在确认后补充。')
