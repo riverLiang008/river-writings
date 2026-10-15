@@ -7,7 +7,7 @@ const collections = [
   { id: 'diagonal', title: '在对角线上' },
   { id: 'afternoon', title: '有风吹过的寻常下午' },
   { id: 'sunset', title: '晨光熹微中我们看见镜中的自己' },
-  { id: 'novel', title: '痛苦的时候，发呆的时间就会变长' }
+  { id: 'thought-experiments', title: '思想实验', works: 'SSTM / AD' }
 ]
 </script>
 
@@ -23,6 +23,7 @@ const collections = [
         <article v-for="(collection, index) in collections" :key="collection.id" class="archive-card work-shelf" :class="{ 'shelf-wide': [0, 3, 4].includes(index) }">
           <div class="card-meta"><span>{{ String(index + 1).padStart(3, '0') }} / COLLECTION</span></div>
           <div class="card-title"><h3>{{ collection.title }}</h3></div>
+          <div v-if="collection.works" class="card-bottom"><span>{{ collection.works }}</span></div>
         </article>
       </div>
     </section>

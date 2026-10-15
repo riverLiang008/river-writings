@@ -9,7 +9,7 @@ riverWritings 用于文学作品的保存、编辑与网站建设。网站围绕
 
 Odyssey Design 的设计文档由独立仓库 odysseyDesign/odyssey-architecture 维护，作为产品内链接的目标。文档结构、稳定 URL、版本与发布节奏由该项目管理。本站删除 Systems & Design 栏目，不创建 Odyssey 项目页，不复制其文档。
 
-文学随笔归入文学作品，不另设 Ideas & Essays 理论栏目。现存 SSTM、Agency Dynamic 原稿保留归档，不纳入本次网站登记、导航或迁移计划。原材料内的历史分类和发布方案保留不改；当前规划以作者最新确认的文学范围为准。
+文学随笔归入文学作品。「思想实验」作为独立作品单位，收录 SSTM 与 AD（Agency Dynamic），目前仅展示名称，正文整理与发布另行确认。原材料内的历史分类和发布方案保留不改；当前规划以作者最新确认的范围为准。
 
 ## 2. 已完成的目录整理
 
@@ -22,7 +22,7 @@ Odyssey Design 的设计文档由独立仓库 odysseyDesign/odyssey-architecture
 | sources/materials/有风吹过的寻常下午/ | Intro 和 Afternoon No. 01—03，共四份 Markdown |
 | sources/materials/晨光熹微中我们看见镜中的自己/ | 六篇随笔和 Preface，共七份 Markdown |
 | sources/materials/痛苦的时候，发呆的时间就会变长/ | 三份未完成小说 Markdown，默认内部保存 |
-| sources/materials/ideas/ | SSTM、Agency Dynamic 原稿，不纳入本站 |
+| sources/materials/ideas/ | SSTM、Agency Dynamic 原稿；对应「思想实验」，原稿不直接导入网站 |
 | sources/materials/.obsidian/ | 四份编辑器 JSON，不进入构建 |
 
 共 21 份 Markdown、3 份 PDF、4 份 JSON。文件名、正文标题和最终作品集名分别核对，不自动重命名或纠错。原作日期从正文核对，不以文件修改时间代替。2026-10-14 已按作者授权初始化本地 Git，默认分支 main；尚无提交或远程仓库。
@@ -45,7 +45,7 @@ Odyssey Design 的设计文档由独立仓库 odysseyDesign/odyssey-architecture
 
 Home → Literary Works（文学作品）→ Collection（作品集／书籍／系列）→ Chapter（章节）。About、Search、Language 为辅助入口。首页展示简短作者介绍、获批作品集与少量开始阅读入口，不采用无限博客时间流。
 
-六个文学单位暂用稳定 id：a-cloud、julian、diagonal、afternoon、sunset、novel。显示名称、归属与目录由作者确认。未完成小说不自动生成公开卡片；章节不脱离作品成为独立出版单位。
+当前首页六个作品单位使用稳定 id：a-cloud、julian、diagonal、afternoon、sunset、thought-experiments；最后一项为「思想实验」，收录 SSTM 与 AD。目前仅展示作品单位名称，不导入真实正文。novel 保留为内部作品身份，不改名或复用于「思想实验」，暂不展示。章节不脱离作品成为独立出版单位。
 
 作品页展示标题、介绍、年代、体裁、公开版本、目录、开始阅读及获批封面与下载。正文使用单栏、适中行宽和中文行距，显示作品归属及原作日期。目录按钮展开当前作品章节；短文默认无右侧目录，长章节可提供本章目录。
 
@@ -71,7 +71,8 @@ riverWritings/
 │       ├── diagonal/
 │       ├── afternoon/
 │       ├── sunset/
-│       └── novel/
+│       ├── thought-experiments/
+│       └── novel/                   # 内部保留，暂不公开
 ├── assets/                          # 后续资源，逐项批准导出
 ├── publication/
 │   ├── releases/                    # 获批清单

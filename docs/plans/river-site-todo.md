@@ -12,7 +12,7 @@
 - [x] 将 Odyssey 调查限定为建站技术参考。
 - [x] 确认 Odyssey 设计文档独立维护，作为产品内链接目标。
 - [x] 删除 Systems & Design、Odyssey 项目页和三领域导航规划。
-- [x] 将文学随笔归入作品，SSTM/AD 原稿仅保留归档。
+- [x] 将文学随笔归入作品；最新范围增加「思想实验」收录 SSTM/AD，目前仅展示名称，原稿仍保留本地。
 - [x] 将 materials 整体移至 sources/materials，三个 PDF 移至 sources/pdf。
 - [x] 验证移动前后 28 个文件 SHA-256 一致，保留原名、正文和内部结构。
 - [x] 更新架构提案并新增根 README。
@@ -35,7 +35,7 @@
 
 前置：基础设施验收及具体作品整理授权。验收：原稿未覆盖，作品归属、版本、日期和审批可复核。
 
-- [ ] 为 a-cloud、julian、diagonal、afternoon、sunset、novel 六个文学单位登记稳定 id。
+- [ ] 为 a-cloud、julian、diagonal、afternoon、sunset、thought-experiments 六个公开作品单位登记元数据；novel 仅内部保留。
 - [ ] 确认作品集名称、归属、章节目录、标题和原作日期。
 - [ ] 在来源记录中使用 sources 下的新路径，登记原材料哈希。
 - [ ] 经授权提取 PDF，并逐章对照正文、目录、日期和脚注。
