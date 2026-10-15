@@ -12,7 +12,24 @@ export default defineConfig({
   cleanUrls: true,
   appearance: true,
   lastUpdated: false,
+  locales: {
+    root: { label: '中文 + English', lang: 'zh-CN', link: '/' },
+    en: {
+      label: 'English', lang: 'en', link: '/en/',
+      description: 'River’s writing archive. Chinese originals; translations forthcoming.',
+      themeConfig: {
+        nav: [{ text: 'ARCHIVE', link: '/en/' }],
+        search: { provider: 'local' },
+        langMenuLabel: 'Language',
+        returnToTopLabel: 'Back to top',
+        darkModeSwitchLabel: 'Appearance',
+        darkModeSwitchTitle: 'Switch to dark theme',
+        lightModeSwitchTitle: 'Switch to light theme'
+      }
+    }
+  },
   themeConfig: {
+    langMenuLabel: '语言 / Language',
     logo: undefined,
     siteTitle: 'RIVER',
     nav: [

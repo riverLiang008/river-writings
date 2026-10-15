@@ -1,4 +1,6 @@
 ﻿<script setup lang="ts">
+import { useData } from 'vitepress'
+const { frontmatter } = useData()
 const collections = [
   { id: 'a-cloud', title: '天空中飘来一朵云' },
   { id: 'julian', title: '尤里安' },
@@ -16,7 +18,7 @@ const collections = [
     </header>
 
     <section class="archive-collections" aria-labelledby="collections-title">
-      <div class="archive-section-label"><h2 id="collections-title">辑 / COLLECTIONS</h2><span>INDEX · 001—006</span></div>
+      <div class="archive-section-label"><h2 id="collections-title">{{ frontmatter.archiveEnglish ? 'COLLECTIONS' : '辑 / COLLECTIONS' }}</h2><span>INDEX · 001—006</span></div>
       <div class="collection-grid">
         <article v-for="(collection, index) in collections" :key="collection.id" class="archive-card work-shelf" :class="{ 'shelf-wide': [0, 3, 4].includes(index) }">
           <div class="card-meta"><span>{{ String(index + 1).padStart(3, '0') }} / COLLECTION</span></div>

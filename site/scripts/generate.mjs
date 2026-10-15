@@ -53,6 +53,11 @@ for (const [index, chapter] of chapters.entries()) {
     prev: neighbor(-1), next: neighbor(1)
   }, chapter.text)
 }
+add('en/index.md', {
+  layout: 'home', title: 'Writing Archive', lang: 'en', archiveEnglish: true,
+  description: 'River’s writing archive. Collection titles are shown in their original Chinese; translations are forthcoming.',
+  archiveCollection: { title: collection.title, link: root, entries: [] }
+}, '')
 for (const [path, text] of pages) {
   const target = resolve(output, path)
   await mkdir(dirname(target), { recursive: true })

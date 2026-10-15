@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../.vitepress/dist')
-const expected = ['index.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
+const expected = ['index.html', 'en/index.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
   'zh/literature/demo/index.html', 'zh/literature/demo/editions/sample-v1/morning.html',
   'zh/literature/demo/editions/sample-v1/window.html']
 async function walk(path, prefix = '') {
