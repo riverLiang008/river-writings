@@ -10,7 +10,7 @@ const { frontmatter } = useData()
     </header>
 
     <section class="archive-collections" aria-labelledby="collections-title">
-      <div class="archive-section-label"><h2 id="collections-title">辑 / COLLECTIONS</h2><span>INDEX · 001</span></div>
+      <div class="archive-section-label"><h2 id="collections-title">辑 / COLLECTIONS</h2><span>INDEX · 001—004</span></div>
       <div class="collection-grid">
         <a class="archive-card collection-featured" :href="withBase(frontmatter.archiveCollection.link)">
           <div class="card-meta"><span>001 / COLLECTION</span><span>虚构样本 · 02 篇</span></div>
@@ -18,6 +18,21 @@ const { frontmatter } = useData()
           <p>从清晨的河岸，到午后的窗边。<br>两个日常片刻，一次缓慢的行走。</p>
           <div class="card-bottom"><span>散文片段 / 中文</span><span class="card-action">进入这一辑 ↗</span></div>
         </a>
+        <div class="archive-card collection-placeholder">
+          <div class="card-meta"><span>002 / RESERVED</span><span>目录预留</span></div>
+          <div class="card-title"><h3>未题名</h3></div>
+          <div class="card-bottom"><span>尚未收录</span><span>—</span></div>
+        </div>
+        <div class="archive-card collection-placeholder">
+          <div class="card-meta"><span>003 / RESERVED</span><span>目录预留</span></div>
+          <div class="card-title"><h3>未题名</h3></div>
+          <div class="card-bottom"><span>尚未收录</span><span>—</span></div>
+        </div>
+        <div class="archive-card collection-placeholder archive-note">
+          <div class="card-meta"><span>004 / RESERVED</span><span>目录预留</span></div>
+          <div class="card-title"><h3>未题名</h3></div>
+          <div class="card-bottom"><span>尚未收录</span><span>—</span></div>
+        </div>
       </div>
     </section>
 
