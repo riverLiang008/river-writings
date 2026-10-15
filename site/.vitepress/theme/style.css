@@ -109,3 +109,14 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--vp-c-brand-1);
 @media (prefers-reduced-motion: reduce) {
   .archive-card, .card-action { transition: none !important; }
 }
+
+.work-shelf { min-height: 270px; justify-content: space-between; }
+.work-shelf.shelf-wide { grid-column: span 2; background: var(--vp-c-bg-alt); }
+.work-shelf .card-title { margin-top: 50px; margin-bottom: 20px; }
+.work-shelf .card-title h3 { font-size: clamp(23px, 2.4vw, 32px); line-height: 1.65; text-wrap: pretty; overflow-wrap: anywhere; }
+.archive-collections { margin-bottom: 64px; }
+@media (max-width: 640px) {
+  .work-shelf.shelf-wide { grid-column: auto; }
+  .work-shelf { min-height: 220px; }
+  .work-shelf .card-title h3 { font-size: 25px; }
+}
