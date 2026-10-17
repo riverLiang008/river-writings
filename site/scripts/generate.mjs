@@ -78,16 +78,22 @@ for (const [index, entry] of cloudChapters.entries()) {
   const text = await readFile(resolve(releaseDir, entry.file), 'utf8')
   if (createHash('sha256').update(text).digest('hex') !== entry.sha256 || !text.startsWith(`# ${entry.title}\n`) || /等待戈多的人都该死|<script|<iframe|@include|\{\{/.test(text)) throw new Error('Release content failed validation')
   const neighbor = offset => cloudChapters[index + offset] ? { text: cloudChapters[index + offset].title, link: cloudChapters[index + offset].link } : false
-  add(`${entry.link.slice(1)}.md`, { title: entry.title, collectionTitle: release.title, collectionLink: cloudRoot, originalDate: entry.date, translationLink: entry.id === 'sleepwalker' ? '/en/literature/a-cloud/editions/selected-v1/sleepwalker' : undefined, aside: false, outline: false, chapters: cloudChapters.map(({ title, link }) => ({ title, link })), prev: neighbor(-1), next: neighbor(1) }, text)
+  add(`${entry.link.slice(1)}.md`, { title: entry.title, collectionTitle: release.title, collectionLink: cloudRoot, originalDate: entry.date, translationLink: ['sleepwalker', 'nothing-happened'].includes(entry.id) ? `/en/literature/a-cloud/editions/selected-v1/${entry.id}` : undefined, aside: false, outline: false, chapters: cloudChapters.map(({ title, link }) => ({ title, link })), prev: neighbor(-1), next: neighbor(1) }, text)
 }
 const englishDir = resolve(releaseDir, 'en')
 const translation = JSON.parse(await readFile(resolve(englishDir, 'translation.json'), 'utf8'))
 const englishText = await readFile(resolve(englishDir, 'sleepwalker.md'), 'utf8')
 if (translation.id !== 'sleepwalker' || translation.language !== 'en' || translation.sourceSha256 !== release.entries[0].sha256 || createHash('sha256').update(englishText).digest('hex') !== translation.sha256 || !englishText.includes('Translated into English by ChatGPT.') || !englishText.includes('not transcriptions of Williams')) throw new Error('English release validation failed')
 const englishCollectionTitle = 'A Cloud Drifts Across the Sky'
-const englishLink = '/en/literature/a-cloud/editions/selected-v1/sleepwalker'
-add('en/literature/a-cloud/index.md', { title: englishCollectionTitle, aside: false, outline: false }, `# ${englishCollectionTitle}\n\nChinese originals · English translations\n\n1. [${translation.title}](${englishLink})`)
-add(`${englishLink.slice(1)}.md`, { title: translation.title, lang: 'en', collectionTitle: englishCollectionTitle, collectionLink: '/en/literature/a-cloud/', originalDate: release.entries[0].date, readingLanguage: 'English', translationLink: cloudChapters[0].link, chapters: [{ title: translation.title, link: englishLink }], aside: false, outline: false, prev: false, next: false }, englishText)
+const secondTranslation = JSON.parse(await readFile(resolve(englishDir, 'nothing-happened.translation.json'), 'utf8'))
+const secondText = await readFile(resolve(englishDir, 'nothing-happened.md'), 'utf8')
+if (secondTranslation.id !== 'nothing-happened' || secondTranslation.language !== 'en' || secondTranslation.sourceSha256 !== release.entries[1].sha256 || createHash('sha256').update(secondText).digest('hex') !== secondTranslation.sha256 || !secondText.startsWith(`# ${secondTranslation.title}\n`) || !secondText.includes('Translated into English by ChatGPT.') || !secondText.includes('not a verified quotation')) throw new Error('Second English release validation failed')
+const englishChapters = [{ ...translation, text: englishText }, { ...secondTranslation, text: secondText }].map(entry => ({ ...entry, link: `/en/literature/a-cloud/editions/selected-v1/${entry.id}` }))
+add('en/literature/a-cloud/index.md', { title: englishCollectionTitle, aside: false, outline: false }, `# ${englishCollectionTitle}\n\nChinese originals · English translations\n\n${englishChapters.map((entry, index) => `${index + 1}. [${entry.title}](${entry.link})`).join('\n')}`)
+for (const [index, entry] of englishChapters.entries()) {
+  const neighbor = offset => englishChapters[index + offset] ? { text: englishChapters[index + offset].title, link: englishChapters[index + offset].link } : false
+  add(`${entry.link.slice(1)}.md`, { title: entry.title, lang: 'en', collectionTitle: englishCollectionTitle, collectionLink: '/en/literature/a-cloud/', originalDate: release.entries[index].date, readingLanguage: 'English', translationLink: cloudChapters[index].link, chapters: englishChapters.map(({ title, link }) => ({ title, link })), aside: false, outline: false, prev: neighbor(-1), next: neighbor(1) }, entry.text)
+}
 pages.set('zh/literature/index.md', `---\ntitle: 文学作品\n---\n\n# 文学作品\n\n[${release.title}](${cloudRoot})\n`)
 for (const [path, text] of pages) {
   const target = resolve(output, path)

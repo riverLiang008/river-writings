@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../.vitepress/dist')
-const expected = ['index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
+const expected = ['index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
   'zh/literature/demo/index.html', 'zh/literature/demo/editions/sample-v1/morning.html',
   'zh/literature/demo/editions/sample-v1/window.html', 'zh/literature/a-cloud/index.html',
   ...['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought', 'arrogance-of-advice', 'reading-and-existence'].map(id => `zh/literature/a-cloud/editions/selected-v1/${id}.html`)]
@@ -47,4 +47,10 @@ for (const n of [1, 2]) {
     if (!englishPage.includes(marker)) throw new Error(`English note link missing: ${marker}`)
   }
 }
+const secondEnglishPage = await readFile(resolve(output, 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html'), 'utf8')
+for (const marker of ['Translated into English by ChatGPT.', 'not a verified quotation', 'id="ref-1"', 'id="note-1"', 'href="#note-1"', 'href="#ref-1"', '/zh/literature/a-cloud/editions/selected-v1/nothing-happened', '/en/literature/a-cloud/editions/selected-v1/sleepwalker']) {
+  if (!secondEnglishPage.includes(marker)) throw new Error(`Second English page missing: ${marker}`)
+}
+const englishPoem = secondEnglishPage.match(/<div class="poem">([\s\S]*?)<\/div>/)?.[1]
+if (!englishPoem || (englishPoem.match(/<br\s*\/?>/g) || []).length !== 3) throw new Error('Expected four English poem lines')
 console.log(`Verified ${html.length} pages, Chinese and English notes, translation attribution, four poem lines and build boundaries.`)
