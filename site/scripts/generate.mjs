@@ -85,7 +85,7 @@ const translation = JSON.parse(await readFile(resolve(englishDir, 'translation.j
 const englishText = await readFile(resolve(englishDir, 'sleepwalker.md'), 'utf8')
 if (translation.id !== 'sleepwalker' || translation.language !== 'en' || translation.sourceSha256 !== release.entries[0].sha256 || createHash('sha256').update(englishText).digest('hex') !== translation.sha256 || !englishText.includes('Translated into English by ChatGPT.') || !englishText.includes('not transcriptions of Williams')) throw new Error('English release validation failed')
 const englishLink = '/en/literature/a-cloud/editions/selected-v1/sleepwalker'
-add('en/literature/a-cloud/index.md', { title: release.title, aside: false, outline: false }, `# ${release.title}\n\nChinese originals · English translations\n\n1. [${translation.title}](${englishLink})\n\n[Complete collection in Chinese](${cloudRoot})`)
+add('en/literature/a-cloud/index.md', { title: release.title, aside: false, outline: false }, `# ${release.title}\n\nChinese originals · English translations\n\n1. [${translation.title}](${englishLink})`)
 add(`${englishLink.slice(1)}.md`, { title: translation.title, lang: 'en', collectionTitle: release.title, collectionLink: '/en/literature/a-cloud/', originalDate: release.entries[0].date, readingLanguage: 'English', translationLink: cloudChapters[0].link, chapters: [{ title: translation.title, link: englishLink }], aside: false, outline: false, prev: false, next: false }, englishText)
 pages.set('zh/literature/index.md', `---\ntitle: 文学作品\n---\n\n# 文学作品\n\n[${release.title}](${cloudRoot})\n`)
 for (const [path, text] of pages) {
