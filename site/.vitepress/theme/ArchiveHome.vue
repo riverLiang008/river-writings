@@ -2,7 +2,7 @@
 import { useData, withBase } from 'vitepress'
 const { frontmatter } = useData()
 const collections = [
-  { id: 'a-cloud', title: '天空中飘来一朵云' },
+  { id: 'a-cloud', title: '天空中飘来一朵云', englishTitle: 'A Cloud Drifts Across the Sky' },
   { id: 'julian', title: '尤里安' },
   { id: 'diagonal', title: '在对角线上' },
   { id: 'afternoon', title: '有风吹过的寻常下午' },
@@ -22,7 +22,7 @@ const collections = [
       <div class="collection-grid">
         <article v-for="(collection, index) in collections" :key="collection.id" class="archive-card work-shelf" :class="{ 'shelf-wide': [0, 3, 4].includes(index) }">
           <div class="card-meta"><span>{{ String(index + 1).padStart(3, '0') }} / COLLECTION</span></div>
-          <div class="card-title"><h3><a v-if="collection.id === 'a-cloud'" :href="withBase(frontmatter.archiveEnglish ? '/en/literature/a-cloud/' : '/zh/literature/a-cloud/')">{{ collection.title }} ↗</a><template v-else>{{ collection.title }}</template></h3></div>
+          <div class="card-title"><h3><a v-if="collection.id === 'a-cloud'" :href="withBase(frontmatter.archiveEnglish ? '/en/literature/a-cloud/' : '/zh/literature/a-cloud/')">{{ frontmatter.archiveEnglish ? collection.englishTitle : collection.title }} ↗</a><template v-else>{{ collection.title }}</template></h3></div>
         </article>
       </div>
     </section>
