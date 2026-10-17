@@ -16,7 +16,7 @@ export default defineConfig({
     root: { label: '中文 + English', lang: 'zh-CN', link: '/' },
     en: {
       label: 'English', lang: 'en', link: '/en/',
-      description: 'River’s writing archive. Chinese originals; translations forthcoming.',
+      description: 'River’s writing archive. Chinese originals and English translations.',
       themeConfig: {
         nav: [{ text: 'ARCHIVE', link: '/en/' }],
         search: { provider: 'local' },
@@ -29,6 +29,7 @@ export default defineConfig({
     }
   },
   themeConfig: {
+    i18nRouting: false,
     langMenuLabel: '语言 / Language',
     logo: undefined,
     siteTitle: 'RIVER',

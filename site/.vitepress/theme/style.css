@@ -165,3 +165,8 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--vp-c-brand-1);
   .vp-doc blockquote { font-size: 16px; padding: 0 16px; }
   .vp-doc .poem { padding-left: 0; font-size: 16px; }
 }
+
+.article-language-switch { font-size: 12px; padding: 8px 12px; margin-left: 8px; white-space: nowrap; color: var(--vp-c-text-2); }
+.has-reading-translation .VPNavBarTranslations { display: none !important; }
+.vp-doc[lang='en'] { font-family: Georgia, 'Times New Roman', serif; }
+.reading-language { display: inline-block; margin-top: 12px; }

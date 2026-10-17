@@ -36,7 +36,7 @@ async function clearMarkdown(directory) {
 await clearMarkdown(output)
 const pages = new Map()
 function add(path, metadata, body) {
-  pages.set(path, `---\n${Object.entries(metadata).map(([key, value]) => `${key}: ${JSON.stringify(value)}`).join('\n')}\n---\n\n${body}\n`)
+  pages.set(path, `---\n${Object.entries(metadata).filter(([, value]) => value !== undefined).map(([key, value]) => `${key}: ${JSON.stringify(value)}`).join('\n')}\n---\n\n${body}\n`)
 }
 add('index.md', {
   layout: 'home',
@@ -56,7 +56,7 @@ for (const [index, chapter] of chapters.entries()) {
 }
 add('en/index.md', {
   layout: 'home', title: 'Writing Archive', lang: 'en', archiveEnglish: true,
-  description: 'River’s writing archive. Collection titles are shown in their original Chinese; translations are forthcoming.',
+  description: 'River’s writing archive. Collection titles are shown in their original Chinese, with selected English translations.',
   archiveCollection: { title: collection.title, link: root, entries: [] }
 }, '')
 const releaseDir = resolve(site, '../publication/releases/a-cloud')
@@ -70,16 +70,23 @@ add('zh/literature/a-cloud/index.md', { title: release.title, aside: false, outl
 
 # ${release.title}
 
-<p class="collection-info">???? ? ?? / ${cloudChapters.length} ?</p>
-<h2 class="contents-title">?? / CONTENTS</h2>
+<p class="collection-info">中文原作 · 选集 / ${cloudChapters.length} 篇</p>
+<h2 class="contents-title">目录 / CONTENTS</h2>
 <ol class="book-contents">${cloudChapters.map((entry, index) => `<li><a href="${process.env.SITE_BASE ? process.env.SITE_BASE.slice(0, -1) : ''}${entry.link}"><span>${String(index + 1).padStart(2, '0')}</span><span>${entry.title}</span></a></li>`).join('')}</ol>
 </div>`)
 for (const [index, entry] of cloudChapters.entries()) {
   const text = await readFile(resolve(releaseDir, entry.file), 'utf8')
   if (createHash('sha256').update(text).digest('hex') !== entry.sha256 || !text.startsWith(`# ${entry.title}\n`) || /等待戈多的人都该死|<script|<iframe|@include|\{\{/.test(text)) throw new Error('Release content failed validation')
   const neighbor = offset => cloudChapters[index + offset] ? { text: cloudChapters[index + offset].title, link: cloudChapters[index + offset].link } : false
-  add(`${entry.link.slice(1)}.md`, { title: entry.title, collectionTitle: release.title, collectionLink: cloudRoot, originalDate: entry.date, aside: false, outline: false, chapters: cloudChapters.map(({ title, link }) => ({ title, link })), prev: neighbor(-1), next: neighbor(1) }, text)
+  add(`${entry.link.slice(1)}.md`, { title: entry.title, collectionTitle: release.title, collectionLink: cloudRoot, originalDate: entry.date, translationLink: entry.id === 'sleepwalker' ? '/en/literature/a-cloud/editions/selected-v1/sleepwalker' : undefined, aside: false, outline: false, chapters: cloudChapters.map(({ title, link }) => ({ title, link })), prev: neighbor(-1), next: neighbor(1) }, text)
 }
+const englishDir = resolve(releaseDir, 'en')
+const translation = JSON.parse(await readFile(resolve(englishDir, 'translation.json'), 'utf8'))
+const englishText = await readFile(resolve(englishDir, 'sleepwalker.md'), 'utf8')
+if (translation.id !== 'sleepwalker' || translation.language !== 'en' || translation.sourceSha256 !== release.entries[0].sha256 || createHash('sha256').update(englishText).digest('hex') !== translation.sha256 || !englishText.includes('Translated into English by ChatGPT.') || !englishText.includes('not transcriptions of Williams')) throw new Error('English release validation failed')
+const englishLink = '/en/literature/a-cloud/editions/selected-v1/sleepwalker'
+add('en/literature/a-cloud/index.md', { title: release.title, aside: false, outline: false }, `# ${release.title}\n\nChinese originals · English translations\n\n1. [${translation.title}](${englishLink})\n\n[Complete collection in Chinese](${cloudRoot})`)
+add(`${englishLink.slice(1)}.md`, { title: translation.title, lang: 'en', collectionTitle: release.title, collectionLink: '/en/literature/a-cloud/', originalDate: release.entries[0].date, readingLanguage: 'English', translationLink: cloudChapters[0].link, chapters: [{ title: translation.title, link: englishLink }], aside: false, outline: false, prev: false, next: false }, englishText)
 pages.set('zh/literature/index.md', `---\ntitle: 文学作品\n---\n\n# 文学作品\n\n[${release.title}](${cloudRoot})\n`)
 for (const [path, text] of pages) {
   const target = resolve(output, path)
