@@ -23,7 +23,7 @@ I do not know why that afternoon, ordinary as it was, touched me so deeply and s
 <div class="poem"><p>A day of doing nothing<br>
 Gently, intently—I will linger over the sunset passing before me<br>
 Feel light and warmth spread over my body, seep into every pore<br>
-In this moment, raise my soul as one raises a flag</p></div>
+And in this moment, I raise my soul like a flag.</p></div>
 
 ## Notes
 
