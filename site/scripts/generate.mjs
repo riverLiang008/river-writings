@@ -38,10 +38,6 @@ const pages = new Map()
 function add(path, metadata, body) {
   pages.set(path, `---\n${Object.entries(metadata).filter(([, value]) => value !== undefined).map(([key, value]) => `${key}: ${JSON.stringify(value)}`).join('\n')}\n---\n\n${body}\n`)
 }
-add('index.md', {
-  layout: 'home',
-  archiveCollection: { title: collection.title, link: root, entries: chapters.map(({ title, link }) => ({ title, link })) }
-}, '')
 add('zh/literature/index.md', { title: '文学作品' }, `# 文学作品\n\n以作品集为起点，沿着章节阅读。\n\n## [${collection.title}](${root})\n\n${collection.description}\n\n虚构样本 · ${chapters.length} 篇 · 中文\n\n[开始阅读 →](${chapters[0].link})\n\n---\n\n当前是网站阅读样本，正式作品将在整理和确认后加入。`)
 add('zh/about.md', { title: '关于' }, '# 关于\n\n这里是 River 的文学作品阅读空间。作品将以书籍、作品集和系列的方式呈现，让每一篇文字保留它所在的语境。\n\n目前可阅读《天空中飘来一朵云》六篇精选。其余作品陆续整理。')
 add('404.md', { title: '页面未找到' }, '# 这一页还没有文字\n\n[回到首页](/) · [浏览作品](/zh/literature/)')
@@ -54,11 +50,6 @@ for (const [index, chapter] of chapters.entries()) {
     prev: neighbor(-1), next: neighbor(1)
   }, chapter.text)
 }
-add('en/index.md', {
-  layout: 'home', title: 'Writing Archive', lang: 'en', archiveEnglish: true,
-  description: 'River’s writing archive. Collection titles are shown in their original Chinese, with selected English translations.',
-  archiveCollection: { title: collection.title, link: root, entries: [] }
-}, '')
 const releaseDir = resolve(site, '../publication/releases/a-cloud')
 const release = JSON.parse(await readFile(resolve(releaseDir, 'collection.json'), 'utf8'))
 const allowed = ['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought', 'arrogance-of-advice', 'reading-and-existence']
@@ -95,6 +86,9 @@ for (const [index, entry] of englishChapters.entries()) {
   add(`${entry.link.slice(1)}.md`, { title: entry.title, lang: 'en', collectionTitle: englishCollectionTitle, collectionLink: '/en/literature/a-cloud/', originalDate: release.entries[index].date, readingLanguage: 'English', translationLink: cloudChapters[index].link, chapters: englishChapters.map(({ title, link }) => ({ title, link })), aside: false, outline: false, prev: neighbor(-1), next: neighbor(1) }, entry.text)
 }
 pages.set('zh/literature/index.md', `---\ntitle: 文学作品\n---\n\n# 文学作品\n\n[${release.title}](${cloudRoot})\n`)
+for (const [path, archiveEnglish] of [['index.md', false], ['en/index.md', true]]) {
+  add(path, { layout: 'home', ...(archiveEnglish ? { title: 'Writing Archive', lang: 'en', archiveEnglish: true } : {}), archiveCollection: { totalEntries: cloudChapters.length, entries: (archiveEnglish ? englishChapters : cloudChapters).map(({ title, link }) => ({ title, link })) } }, '')
+}
 for (const [path, text] of pages) {
   const target = resolve(output, path)
   await mkdir(dirname(target), { recursive: true })

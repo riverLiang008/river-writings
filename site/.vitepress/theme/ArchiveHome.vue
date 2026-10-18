@@ -1,14 +1,9 @@
 ﻿<script setup lang="ts">
 import { useData, withBase } from 'vitepress'
+import { collections } from './collections'
 const { frontmatter } = useData()
-const collections = [
-  { id: 'a-cloud', title: '天空中飘来一朵云', englishTitle: 'A Cloud Drifts Across the Sky' },
-  { id: 'julian', title: '尤里安' },
-  { id: 'diagonal', title: '在对角线上' },
-  { id: 'afternoon', title: '有风吹过的寻常下午' },
-  { id: 'sunset', title: '晨光熹微中我们看见镜中的自己' },
-  { id: 'thought-experiments', title: '思想实验' }
-]
+const guide = (collection: typeof collections[number]) => frontmatter.value.archiveEnglish ? collection.en : collection.zh
+const chapterPreview = () => frontmatter.value.archiveCollection.entries.slice(0, 2).map((entry: { title: string }) => entry.title).join(' / ')
 </script>
 
 <template>
@@ -23,6 +18,12 @@ const collections = [
         <article v-for="(collection, index) in collections" :key="collection.id" class="archive-card work-shelf" :class="{ 'shelf-wide': [0, 3, 4].includes(index) }">
           <div class="card-meta"><span>{{ String(index + 1).padStart(3, '0') }} / COLLECTION</span></div>
           <div class="card-title"><h3><a v-if="collection.id === 'a-cloud'" :href="withBase(frontmatter.archiveEnglish ? '/en/literature/a-cloud/' : '/zh/literature/a-cloud/')">{{ frontmatter.archiveEnglish ? collection.englishTitle : collection.title }} ↗</a><template v-else>{{ collection.title }}</template></h3></div>
+          <div class="collection-guide">
+            <p class="collection-genre">{{ guide(collection).genre }}</p>
+            <p class="collection-description">{{ guide(collection).description }}</p>
+            <p v-if="collection.id === 'a-cloud'" class="collection-contents"><span>{{ frontmatter.archiveEnglish ? 'Contents: ' : '收录：' }}</span>{{ frontmatter.archiveEnglish ? `${frontmatter.archiveCollection.totalEntries} selected pieces in Chinese; ${frontmatter.archiveCollection.entries.length} in English` : `${frontmatter.archiveCollection.totalEntries} 篇精选` }} · {{ chapterPreview() }}</p>
+            <p v-else class="collection-contents"><span>{{ frontmatter.archiveEnglish ? 'Contents: ' : '收录：' }}</span>{{ guide(collection).contents }}</p>
+          </div>
         </article>
       </div>
     </section>
