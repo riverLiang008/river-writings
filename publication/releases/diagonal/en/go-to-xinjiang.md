@@ -1,4 +1,4 @@
-# “Go to Xinjiang”
+# “Off to Xinjiang”
 
 *Written in Chinese by River. Translated into English by ChatGPT.*
 
@@ -24,7 +24,7 @@ I fell silent too.
 
 ## II
 
-“Go to Xinjiang”—at first it was just an idea born of defiance. Later it became a rhythm—job applications, interviews, slowly planning the trip. Meanwhile, what I wanted was becoming clearer too—perhaps I was looking for somewhere far away to wash the dust off me.
+“Off to Xinjiang”—at first it was just an idea born of defiance. Later it became a rhythm—job applications, interviews, slowly planning the trip. Meanwhile, what I wanted was becoming clearer too—perhaps I was looking for somewhere far away to wash the dust off me.
 
 On the day the wind from the Tianshan Mountains blows over my whole body, will I come alive again?
 
@@ -40,7 +40,7 @@ On the day I left, I got up at 4:40 a.m. to catch an early train. It was still d
 
 For the first leg, I bought a standing-room-only ticket. Shenzhen to Hengyang. Seven hours.
 
-As soon as I boarded, I found an empty patch of floor between carriages and sat down. The only other time I had taken one of the old green-liveried trains was when I was very small and my father took me back to our hometown. Watching the train begin to move along the tracks, listening to its clattering, I had thought it all so new and exciting.
+As soon as I boarded, I found an empty patch of floor between carriages and sat down. The only other time I had taken one of the old green trains was when I was very small and my father took me back to our hometown. Watching the train begin to move along the tracks, listening to its clattering, I had thought it all so new and exciting.
 
 But now, sitting on a floor that didn't look particularly clean, with another seven hours of it ahead of me, I realised just how different these trains were from high-speed rail. A middle-aged woman's voice drifted down the carriage: “Anyone without a seat want to buy one in the dining car?” She came over. “Miss, would you like a seat in the dining car?” “How much?” I asked. “Breakfast, lunch and afternoon tea included. One hundred and thirty-five yuan altogether.” “That much?” I hesitated. “We've only just left the starting station. It's quiet now, but this place will be packed later. You won't be comfortable sitting here.” Persuaded, I followed her towards the dining car. “That's right. A girl should treat herself better. A hundred yuan buys you some space.”
 

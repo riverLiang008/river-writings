@@ -7,13 +7,13 @@
     {
       "id": "go-to-xinjiang",
       "title": "“到新疆去”",
-      "englishTitle": "“Go to Xinjiang”",
+      "englishTitle": "“Off to Xinjiang”",
       "date": "2026",
       "file": "go-to-xinjiang.md",
       "sha256": "ba8a337077836886b69d081131bc995d1750d77e13f058e0cdaec6580181d183",
       "translation": {
         "file": "en/go-to-xinjiang.md",
-        "sha256": "248f5aa588418a4f2b485471eb2553c7ff11d49b8a4100e33e66343dd85e7640",
+        "sha256": "151e96a6226d6cb265e0e961d7abbb63c6943fb85686c29a6eceee1b359bfbec",
         "sourceSha256": "ba8a337077836886b69d081131bc995d1750d77e13f058e0cdaec6580181d183",
         "translatedBy": "ChatGPT"
       }
