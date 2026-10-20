@@ -69,7 +69,7 @@ for (const [index, entry] of cloudChapters.entries()) {
   const text = await readFile(resolve(releaseDir, entry.file), 'utf8')
   if (createHash('sha256').update(text).digest('hex') !== entry.sha256 || !text.startsWith(`# ${entry.title}\n`) || /等待戈多的人都该死|<script|<iframe|@include|\{\{/.test(text)) throw new Error('Release content failed validation')
   const neighbor = offset => cloudChapters[index + offset] ? { text: cloudChapters[index + offset].title, link: cloudChapters[index + offset].link } : false
-  add(`${entry.link.slice(1)}.md`, { title: entry.title, collectionTitle: release.title, collectionLink: cloudRoot, originalDate: entry.date, translationLink: ['sleepwalker', 'nothing-happened'].includes(entry.id) ? `/en/literature/a-cloud/editions/selected-v1/${entry.id}` : undefined, aside: false, outline: false, chapters: cloudChapters.map(({ title, link }) => ({ title, link })), prev: neighbor(-1), next: neighbor(1) }, text)
+  add(`${entry.link.slice(1)}.md`, { title: entry.title, collectionTitle: release.title, collectionLink: cloudRoot, originalDate: entry.date, translationLink: ['sleepwalker', 'nothing-happened', 'blue-bicycle'].includes(entry.id) ? `/en/literature/a-cloud/editions/selected-v1/${entry.id}` : undefined, aside: false, outline: false, chapters: cloudChapters.map(({ title, link }) => ({ title, link })), prev: neighbor(-1), next: neighbor(1) }, text)
 }
 const englishDir = resolve(releaseDir, 'en')
 const translation = JSON.parse(await readFile(resolve(englishDir, 'translation.json'), 'utf8'))
@@ -79,7 +79,10 @@ const englishCollectionTitle = 'A Cloud Drifts Across the Sky'
 const secondTranslation = JSON.parse(await readFile(resolve(englishDir, 'nothing-happened.translation.json'), 'utf8'))
 const secondText = await readFile(resolve(englishDir, 'nothing-happened.md'), 'utf8')
 if (secondTranslation.id !== 'nothing-happened' || secondTranslation.language !== 'en' || secondTranslation.sourceSha256 !== release.entries[1].sha256 || createHash('sha256').update(secondText).digest('hex') !== secondTranslation.sha256 || !secondText.startsWith(`# ${secondTranslation.title}\n`) || !secondText.includes('Translated into English by ChatGPT.') || !secondText.includes('not a verified quotation')) throw new Error('Second English release validation failed')
-const englishChapters = [{ ...translation, text: englishText }, { ...secondTranslation, text: secondText }].map(entry => ({ ...entry, link: `/en/literature/a-cloud/editions/selected-v1/${entry.id}` }))
+const thirdTranslation = JSON.parse(await readFile(resolve(englishDir, 'blue-bicycle.translation.json'), 'utf8'))
+const thirdText = await readFile(resolve(englishDir, 'blue-bicycle.md'), 'utf8')
+if (thirdTranslation.id !== 'blue-bicycle' || thirdTranslation.language !== 'en' || thirdTranslation.sourceSha256 !== release.entries[2].sha256 || createHash('sha256').update(thirdText).digest('hex') !== thirdTranslation.sha256 || !thirdText.startsWith(`# ${thirdTranslation.title}\n`) || !thirdText.includes('Translated into English by ChatGPT.')) throw new Error('Third English release validation failed')
+const englishChapters = [{ ...translation, text: englishText }, { ...secondTranslation, text: secondText }, { ...thirdTranslation, text: thirdText }].map(entry => ({ ...entry, link: `/en/literature/a-cloud/editions/selected-v1/${entry.id}` }))
 add('en/literature/a-cloud/index.md', { title: englishCollectionTitle, aside: false, outline: false }, `# ${englishCollectionTitle}\n\nChinese originals · English translations\n\n${englishChapters.map((entry, index) => `${index + 1}. [${entry.title}](${entry.link})`).join('\n')}`)
 for (const [index, entry] of englishChapters.entries()) {
   const neighbor = offset => englishChapters[index + offset] ? { text: englishChapters[index + offset].title, link: englishChapters[index + offset].link } : false

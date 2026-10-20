@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../.vitepress/dist')
-const expected = ['index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
+const expected = ['en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
   'zh/literature/demo/index.html', 'zh/literature/demo/editions/sample-v1/morning.html',
   'zh/literature/demo/editions/sample-v1/window.html', 'zh/literature/a-cloud/index.html',
   ...['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought', 'arrogance-of-advice', 'reading-and-existence'].map(id => `zh/literature/a-cloud/editions/selected-v1/${id}.html`)]
@@ -53,4 +53,8 @@ for (const marker of ['Translated into English by ChatGPT.', 'not a verified quo
 }
 const englishPoem = secondEnglishPage.match(/<div class="poem">([\s\S]*?)<\/div>/)?.[1]
 if (!englishPoem || (englishPoem.match(/<br\s*\/?>/g) || []).length !== 3) throw new Error('Expected four English poem lines')
+const thirdEnglishPage = await readFile(resolve(output, 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html'), 'utf8')
+for (const marker of ['Translated into English by ChatGPT.', 'Moment A:', 'Moment B:', '/zh/literature/a-cloud/editions/selected-v1/blue-bicycle', '/en/literature/a-cloud/editions/selected-v1/nothing-happened']) {
+  if (!thirdEnglishPage.includes(marker)) throw new Error(`Third English page missing: ${marker}`)
+}
 console.log(`Verified ${html.length} pages, Chinese and English notes, translation attribution, four poem lines and build boundaries.`)
