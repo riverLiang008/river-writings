@@ -56,15 +56,18 @@ const allowed = ['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and
 if (release.id !== 'a-cloud' || release.edition !== 'selected-v1' || release.entries.length !== allowed.length || release.entries.some((entry, index) => entry.id !== allowed[index] || entry.file !== `${entry.id}.md`)) throw new Error('Unexpected cloud release scope')
 const cloudRoot = '/zh/literature/a-cloud/'
 const cloudChapters = release.entries.map(entry => ({ ...entry, link: `${cloudRoot}editions/${release.edition}/${entry.id}` }))
-add('zh/literature/a-cloud/index.md', { title: release.title, aside: false, outline: false }, `<div class="collection-book">
+function collectionContents(title, info, heading, entries, language) {
+  return `<div class="collection-book">
 <p class="collection-label">COLLECTION 001</p>
 
-# ${release.title}
+# ${title}
 
-<p class="collection-info">中文原作 · 选集 / ${cloudChapters.length} 篇</p>
-<h2 class="contents-title">目录 / CONTENTS</h2>
-<ol class="book-contents">${cloudChapters.map((entry, index) => `<li><a href="${process.env.SITE_BASE ? process.env.SITE_BASE.slice(0, -1) : ''}${entry.link}"><span>${String(index + 1).padStart(2, '0')}</span><span>${entry.title}<span class="collection-keywords">${entry.keywords.zh.join(" · ")}</span></span></a></li>`).join('')}</ol>
-</div>`)
+<p class="collection-info">${info}</p>
+<h2 class="contents-title">${heading}</h2>
+<ol class="book-contents">${entries.map((entry, index) => `<li><a href="${process.env.SITE_BASE ? process.env.SITE_BASE.slice(0, -1) : ''}${entry.link}"><span>${String(index + 1).padStart(2, '0')}</span><span>${entry.title}<span class="collection-keywords">${release.entries.find(source => source.id === entry.id).keywords[language].join(' · ')}</span></span></a></li>`).join('')}</ol>
+</div>`
+}
+add('zh/literature/a-cloud/index.md', { title: release.title, aside: false, outline: false }, collectionContents(release.title, `中文原作 · 选集 / ${cloudChapters.length} 篇`, '目录 / CONTENTS', cloudChapters, 'zh'))
 for (const [index, entry] of cloudChapters.entries()) {
   const text = await readFile(resolve(releaseDir, entry.file), 'utf8')
   if (createHash('sha256').update(text).digest('hex') !== entry.sha256 || !text.startsWith(`# ${entry.title}\n`) || /等待戈多的人都该死|<script|<iframe|@include|\{\{/.test(text)) throw new Error('Release content failed validation')
@@ -86,7 +89,7 @@ const fourthTranslation = JSON.parse(await readFile(resolve(englishDir, 'thought
 const fourthText = await readFile(resolve(englishDir, 'thought-and-thought.md'), 'utf8')
 if (fourthTranslation.id !== 'thought-and-thought' || fourthTranslation.language !== 'en' || fourthTranslation.sourceSha256 !== release.entries[3].sha256 || createHash('sha256').update(fourthText).digest('hex') !== fourthTranslation.sha256 || !fourthText.startsWith(`# ${fourthTranslation.title}\n`) || !fourthText.includes('Translated into English by ChatGPT.') || !fourthText.includes('provisional back-translations')) throw new Error('Fourth English release validation failed')
 const englishChapters = [{ ...translation, text: englishText }, { ...secondTranslation, text: secondText }, { ...thirdTranslation, text: thirdText }, { ...fourthTranslation, text: fourthText }].map(entry => ({ ...entry, link: `/en/literature/a-cloud/editions/selected-v1/${entry.id}` }))
-add('en/literature/a-cloud/index.md', { title: englishCollectionTitle, aside: false, outline: false }, `# ${englishCollectionTitle}\n\nChinese originals · English translations\n\n${englishChapters.map((entry, index) => `${index + 1}. [${entry.title}](${entry.link})<span class="collection-keywords">${release.entries.find(source => source.id === entry.id).keywords.en.join(" · ")}</span>`).join('\n')}`)
+add('en/literature/a-cloud/index.md', { title: englishCollectionTitle, lang: 'en', aside: false, outline: false }, collectionContents(englishCollectionTitle, `Translated from Chinese · Selected essays / ${englishChapters.length} pieces`, 'CONTENTS', englishChapters, 'en'))
 for (const [index, entry] of englishChapters.entries()) {
   const neighbor = offset => englishChapters[index + offset] ? { text: englishChapters[index + offset].title, link: englishChapters[index + offset].link } : false
   add(`${entry.link.slice(1)}.md`, { title: entry.title, lang: 'en', collectionTitle: englishCollectionTitle, collectionLink: '/en/literature/a-cloud/', originalDate: release.entries[index].date, readingLanguage: 'English', translationLink: cloudChapters[index].link, chapters: englishChapters.map(({ title, link }) => ({ title, link })), aside: false, outline: false, prev: neighbor(-1), next: neighbor(1) }, entry.text)
