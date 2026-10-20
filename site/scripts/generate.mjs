@@ -39,7 +39,7 @@ function add(path, metadata, body) {
   pages.set(path, `---\n${Object.entries(metadata).filter(([, value]) => value !== undefined).map(([key, value]) => `${key}: ${JSON.stringify(value)}`).join('\n')}\n---\n\n${body}\n`)
 }
 add('zh/literature/index.md', { title: '文学作品' }, `# 文学作品\n\n以作品集为起点，沿着章节阅读。\n\n## [${collection.title}](${root})\n\n${collection.description}\n\n虚构样本 · ${chapters.length} 篇 · 中文\n\n[开始阅读 →](${chapters[0].link})\n\n---\n\n当前是网站阅读样本，正式作品将在整理和确认后加入。`)
-add('zh/about.md', { title: '关于' }, '# 关于\n\n这里是 River 的文学作品阅读空间。作品将以书籍、作品集和系列的方式呈现，让每一篇文字保留它所在的语境。\n\n目前可阅读《天空中飘来一朵云》六篇精选。其余作品陆续整理。')
+add('zh/about.md', { title: '关于' }, '# 关于\n\n这里是 River 的文学作品阅读空间。作品将以书籍、作品集和系列的方式呈现，让每一篇文字保留它所在的语境。\n\n目前可阅读《天空中飘来一朵云》四篇精选。其余作品陆续整理。')
 add('404.md', { title: '页面未找到' }, '# 这一页还没有文字\n\n[回到首页](/) · [浏览作品](/zh/literature/)')
 add(`zh/literature/${collection.id}/index.md`, { title: collection.title }, `# ${collection.title}\n\n${collection.description}\n\n虚构样本 · 中文 · ${collection.edition}\n\n[开始阅读 →](${chapters[0].link})\n\n## 目录\n\n${chapters.map((c, i) => `${i + 1}. [${c.title}](${c.link})`).join('\n')}\n\n---\n\n本作品仅用于试读网站，不属于作者现有作品。`)
 for (const [index, chapter] of chapters.entries()) {
@@ -52,7 +52,7 @@ for (const [index, chapter] of chapters.entries()) {
 }
 const releaseDir = resolve(site, '../publication/releases/a-cloud')
 const release = JSON.parse(await readFile(resolve(releaseDir, 'collection.json'), 'utf8'))
-const allowed = ['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought', 'arrogance-of-advice', 'reading-and-existence']
+const allowed = ['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought']
 if (release.id !== 'a-cloud' || release.edition !== 'selected-v1' || release.entries.length !== allowed.length || release.entries.some((entry, index) => entry.id !== allowed[index] || entry.file !== `${entry.id}.md`)) throw new Error('Unexpected cloud release scope')
 const cloudRoot = '/zh/literature/a-cloud/'
 const cloudChapters = release.entries.map(entry => ({ ...entry, link: `${cloudRoot}editions/${release.edition}/${entry.id}` }))
@@ -100,4 +100,4 @@ for (const [path, text] of pages) {
   await mkdir(dirname(target), { recursive: true })
   await writeFile(target, text, 'utf8')
 }
-console.log(`Generated ${pages.size} pages from explicit fixtures and six hash-verified selected chapters; sources/ was not scanned.`)
+console.log(`Generated ${pages.size} pages from explicit fixtures and four hash-verified selected chapters; sources/ was not scanned.`)

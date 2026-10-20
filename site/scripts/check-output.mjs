@@ -5,7 +5,7 @@ const output = resolve(dirname(fileURLToPath(import.meta.url)), '../.vitepress/d
 const expected = ['en/literature/a-cloud/editions/selected-v1/thought-and-thought.html', 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
   'zh/literature/demo/index.html', 'zh/literature/demo/editions/sample-v1/morning.html',
   'zh/literature/demo/editions/sample-v1/window.html', 'zh/literature/a-cloud/index.html',
-  ...['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought', 'arrogance-of-advice', 'reading-and-existence'].map(id => `zh/literature/a-cloud/editions/selected-v1/${id}.html`)]
+  ...['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought'].map(id => `zh/literature/a-cloud/editions/selected-v1/${id}.html`)]
 async function walk(path, prefix = '') {
   const results = []
   for (const item of await readdir(path, { withFileTypes: true })) {
@@ -25,7 +25,7 @@ for (const path of files) {
     if (/SSTM_Original|Agency_Dynamic_Original|River_Editorial_|sources\/materials|sources\/pdf/.test(text)) throw new Error(`Internal material reference in ${path}`)
   }
 }
-for (const [id, noteCount] of Object.entries({ sleepwalker: 2, 'nothing-happened': 1, 'blue-bicycle': 0, 'thought-and-thought': 7, 'arrogance-of-advice': 2, 'reading-and-existence': 2 })) {
+for (const [id, noteCount] of Object.entries({ sleepwalker: 2, 'nothing-happened': 1, 'blue-bicycle': 0, 'thought-and-thought': 7 })) {
   const text = await readFile(resolve(output, `zh/literature/a-cloud/editions/selected-v1/${id}.html`), 'utf8')
   if (/FOOTREF|原注 ·|&lt;sup/.test(text)) throw new Error(`Unconverted reading markup: ${id}`)
   for (let n = 1; n <= noteCount; n++) {
