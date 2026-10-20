@@ -63,7 +63,7 @@ add('zh/literature/a-cloud/index.md', { title: release.title, aside: false, outl
 
 <p class="collection-info">中文原作 · 选集 / ${cloudChapters.length} 篇</p>
 <h2 class="contents-title">目录 / CONTENTS</h2>
-<ol class="book-contents">${cloudChapters.map((entry, index) => `<li><a href="${process.env.SITE_BASE ? process.env.SITE_BASE.slice(0, -1) : ''}${entry.link}"><span>${String(index + 1).padStart(2, '0')}</span><span>${entry.title}</span></a></li>`).join('')}</ol>
+<ol class="book-contents">${cloudChapters.map((entry, index) => `<li><a href="${process.env.SITE_BASE ? process.env.SITE_BASE.slice(0, -1) : ''}${entry.link}"><span>${String(index + 1).padStart(2, '0')}</span><span>${entry.title}<span class="collection-keywords">${entry.keywords.zh.join(" · ")}</span></span></a></li>`).join('')}</ol>
 </div>`)
 for (const [index, entry] of cloudChapters.entries()) {
   const text = await readFile(resolve(releaseDir, entry.file), 'utf8')
@@ -86,7 +86,7 @@ const fourthTranslation = JSON.parse(await readFile(resolve(englishDir, 'thought
 const fourthText = await readFile(resolve(englishDir, 'thought-and-thought.md'), 'utf8')
 if (fourthTranslation.id !== 'thought-and-thought' || fourthTranslation.language !== 'en' || fourthTranslation.sourceSha256 !== release.entries[3].sha256 || createHash('sha256').update(fourthText).digest('hex') !== fourthTranslation.sha256 || !fourthText.startsWith(`# ${fourthTranslation.title}\n`) || !fourthText.includes('Translated into English by ChatGPT.') || !fourthText.includes('provisional back-translations')) throw new Error('Fourth English release validation failed')
 const englishChapters = [{ ...translation, text: englishText }, { ...secondTranslation, text: secondText }, { ...thirdTranslation, text: thirdText }, { ...fourthTranslation, text: fourthText }].map(entry => ({ ...entry, link: `/en/literature/a-cloud/editions/selected-v1/${entry.id}` }))
-add('en/literature/a-cloud/index.md', { title: englishCollectionTitle, aside: false, outline: false }, `# ${englishCollectionTitle}\n\nChinese originals · English translations\n\n${englishChapters.map((entry, index) => `${index + 1}. [${entry.title}](${entry.link})`).join('\n')}`)
+add('en/literature/a-cloud/index.md', { title: englishCollectionTitle, aside: false, outline: false }, `# ${englishCollectionTitle}\n\nChinese originals · English translations\n\n${englishChapters.map((entry, index) => `${index + 1}. [${entry.title}](${entry.link})<span class="collection-keywords">${release.entries.find(source => source.id === entry.id).keywords.en.join(" · ")}</span>`).join('\n')}`)
 for (const [index, entry] of englishChapters.entries()) {
   const neighbor = offset => englishChapters[index + offset] ? { text: englishChapters[index + offset].title, link: englishChapters[index + offset].link } : false
   add(`${entry.link.slice(1)}.md`, { title: entry.title, lang: 'en', collectionTitle: englishCollectionTitle, collectionLink: '/en/literature/a-cloud/', originalDate: release.entries[index].date, readingLanguage: 'English', translationLink: cloudChapters[index].link, chapters: englishChapters.map(({ title, link }) => ({ title, link })), aside: false, outline: false, prev: neighbor(-1), next: neighbor(1) }, entry.text)

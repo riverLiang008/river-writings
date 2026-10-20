@@ -165,6 +165,7 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--vp-c-brand-1);
 .collection-book .contents-title { font-family: var(--vp-font-family-base); font-size: 12px; letter-spacing: .08em; border: 0; padding: 0; margin: 48px 0 20px; }
 .vp-doc .book-contents { list-style: none; padding: 0; }
 .book-contents li { margin: 0; }
+.collection-keywords { display: block; margin-top: 6px; font-family: var(--vp-font-family-base); font-size: 12px; font-weight: 400; line-height: 1.8; color: var(--vp-c-text-2); overflow-wrap: anywhere; }
 .book-contents a { display: grid; grid-template-columns: 36px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--vp-c-divider); text-decoration: none; font-weight: 400; color: var(--vp-c-text-1); }
 .book-contents a > span:first-child { font-family: var(--vp-font-family-base); font-size: 11px; color: var(--vp-c-text-2); }
 .reading-context { border-bottom: 0; padding-bottom: 0; margin-bottom: 28px; }

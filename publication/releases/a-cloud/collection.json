@@ -9,28 +9,92 @@
       "title": "一个梦游者的自述",
       "date": "2025.03.24",
       "file": "sleepwalker.md",
-      "sha256": "cd575aef5e8a9d3c0189b8d811d52bcc357b6be339b725e36690b9a048cf7386"
+      "sha256": "cd575aef5e8a9d3c0189b8d811d52bcc357b6be339b725e36690b9a048cf7386",
+      "keywords": {
+        "zh": [
+          "自我意识",
+          "孤独",
+          "自由意志",
+          "精神生活",
+          "自我认同"
+        ],
+        "en": [
+          "Self-awareness",
+          "Loneliness",
+          "Free Will",
+          "Inner Life",
+          "Identity"
+        ]
+      }
     },
     {
       "id": "nothing-happened",
       "title": "什么都没发生的一天",
       "date": "2025.01.30–2025.06.25",
       "file": "nothing-happened.md",
-      "sha256": "45596fb18fa0fbe0951492ff081232f2e9d4336dce323aa058bc6bbba8040635"
+      "sha256": "45596fb18fa0fbe0951492ff081232f2e9d4336dce323aa058bc6bbba8040635",
+      "keywords": {
+        "zh": [
+          "日常生活",
+          "幸福",
+          "财富",
+          "感官经验",
+          "当下"
+        ],
+        "en": [
+          "Everyday Life",
+          "Happiness",
+          "Wealth",
+          "Sensory Experience",
+          "The Present"
+        ]
+      }
     },
     {
       "id": "blue-bicycle",
       "title": "十二点的蓝色自行车",
       "date": "2024.05.04",
       "file": "blue-bicycle.md",
-      "sha256": "57a2cf0bc7521d06488582a50bc1e539c70a4bcab826a78defd13fcf79fd61c9"
+      "sha256": "57a2cf0bc7521d06488582a50bc1e539c70a4bcab826a78defd13fcf79fd61c9",
+      "keywords": {
+        "zh": [
+          "时间",
+          "空间",
+          "意识",
+          "知觉",
+          "记忆"
+        ],
+        "en": [
+          "Time",
+          "Space",
+          "Consciousness",
+          "Perception",
+          "Memory"
+        ]
+      }
     },
     {
       "id": "thought-and-thought",
       "title": "思想如何谋杀思想",
       "date": "2023.12.20",
       "file": "thought-and-thought.md",
-      "sha256": "202325fdf53db99610009228860d93066f5118fa612a6c307454bca6dbdeff5a"
+      "sha256": "202325fdf53db99610009228860d93066f5118fa612a6c307454bca6dbdeff5a",
+      "keywords": {
+        "zh": [
+          "佛教",
+          "我执",
+          "善恶",
+          "道德判断",
+          "他者"
+        ],
+        "en": [
+          "Buddhism",
+          "Attachment to Self",
+          "Good and Evil",
+          "Moral Judgment",
+          "The Other"
+        ]
+      }
     }
   ]
 }
