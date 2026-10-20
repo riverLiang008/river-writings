@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../.vitepress/dist')
-const expected = ['en/literature/a-cloud/editions/selected-v1/thought-and-thought.html', 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
+const expected = [...['zh', 'en'].flatMap(lang => [`${lang}/literature/diagonal/index.html`, `${lang}/literature/diagonal/editions/selected-v1/go-to-xinjiang.html`]), 'en/literature/a-cloud/editions/selected-v1/thought-and-thought.html', 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
   'zh/literature/demo/index.html', 'zh/literature/demo/editions/sample-v1/morning.html',
   'zh/literature/demo/editions/sample-v1/window.html', 'zh/literature/a-cloud/index.html',
   ...['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought'].map(id => `zh/literature/a-cloud/editions/selected-v1/${id}.html`)]
@@ -70,3 +70,13 @@ for (const path of ['en/literature/a-cloud/index.html', 'en/literature/a-cloud/e
   if (!(await readFile(resolve(output, path), 'utf8')).includes('/en/literature/a-cloud/editions/selected-v1/thought-and-thought')) throw new Error(`Fourth translation link missing from ${path}`)
 }
 console.log(`Verified ${html.length} pages, Chinese and English notes, translation attribution, four poem lines and build boundaries.`)
+
+for (const language of ['zh', 'en']) {
+  const chapter = await readFile(resolve(output, `${language}/literature/diagonal/editions/selected-v1/go-to-xinjiang.html`), 'utf8')
+  const other = language === 'en' ? 'zh' : 'en'
+  if (!chapter.includes(`/${other}/literature/diagonal/editions/selected-v1/go-to-xinjiang`)) throw new Error('Missing diagonal language switch')
+  if (language === 'en' && !chapter.includes('Translated into English by ChatGPT.')) throw new Error('Missing diagonal translation credit')
+  const home = await readFile(resolve(output, language === 'en' ? 'en/index.html' : 'index.html'), 'utf8')
+  if (!home.includes(`/${language}/literature/diagonal/`)) throw new Error('Missing diagonal home link')
+}
+if (files.some(path => path.includes('review-v1'))) throw new Error('Local review pages leaked into public build')

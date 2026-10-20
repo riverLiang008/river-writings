@@ -11,7 +11,7 @@ export const collections = [
     en: { genre: 'Fiction', description: 'A novel centred on a character’s experiences, fate and inner world.', contents: 'Planned as a complete novel; chapters are not yet available.' }
   },
   {
-    id: 'diagonal', title: '在对角线上',
+    id: 'diagonal', title: '在对角线上', englishTitle: 'On the Diagonal',
     zh: { genre: '旅行写作 / Travel Writing', description: '新疆旅途中的风景、人物与见闻，以及行走间的观察和思考。', contents: '拟收录完整旅行作品，正文尚未上线。' },
     en: { genre: 'Travel Writing', description: 'Landscapes, people and encounters from a journey through Xinjiang, with observations and reflections along the way.', contents: 'Planned as a complete travel narrative; the text is not yet available.' }
   },

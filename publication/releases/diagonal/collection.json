@@ -1,0 +1,22 @@
+{
+  "id": "diagonal",
+  "title": "在对角线上",
+  "englishTitle": "On the Diagonal",
+  "edition": "selected-v1",
+  "entries": [
+    {
+      "id": "go-to-xinjiang",
+      "title": "“到新疆去”",
+      "englishTitle": "“Go to Xinjiang”",
+      "date": "2026",
+      "file": "go-to-xinjiang.md",
+      "sha256": "ba8a337077836886b69d081131bc995d1750d77e13f058e0cdaec6580181d183",
+      "translation": {
+        "file": "en/go-to-xinjiang.md",
+        "sha256": "248f5aa588418a4f2b485471eb2553c7ff11d49b8a4100e33e66343dd85e7640",
+        "sourceSha256": "ba8a337077836886b69d081131bc995d1750d77e13f058e0cdaec6580181d183",
+        "translatedBy": "ChatGPT"
+      }
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import { readFile, mkdir, writeFile, readdir, unlink } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createHash } from 'node:crypto'
+import { addDiagonal } from './diagonal.mjs'
 
 const site = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const output = resolve(site, '.generated')
@@ -95,8 +96,9 @@ for (const [index, entry] of englishChapters.entries()) {
   add(`${entry.link.slice(1)}.md`, { title: entry.title, lang: 'en', collectionTitle: englishCollectionTitle, collectionLink: '/en/literature/a-cloud/', originalDate: release.entries[index].date, readingLanguage: 'English', translationLink: cloudChapters[index].link, chapters: englishChapters.map(({ title, link }) => ({ title, link })), aside: false, outline: false, prev: neighbor(-1), next: neighbor(1) }, entry.text)
 }
 pages.set('zh/literature/index.md', `---\ntitle: 文学作品\n---\n\n# 文学作品\n\n[${release.title}](${cloudRoot})\n`)
+const diagonalCollection = await addDiagonal(add, site)
 for (const [path, archiveEnglish] of [['index.md', false], ['en/index.md', true]]) {
-  add(path, { layout: 'home', ...(archiveEnglish ? { title: 'Writing Archive', lang: 'en', archiveEnglish: true } : {}), archiveCollection: { totalEntries: cloudChapters.length, entries: (archiveEnglish ? englishChapters : cloudChapters).map(({ title, link }) => ({ title, link })) } }, '')
+  add(path, { layout: 'home', ...(archiveEnglish ? { title: 'Writing Archive', lang: 'en', archiveEnglish: true } : {}), diagonalCollection, archiveCollection: { totalEntries: cloudChapters.length, entries: (archiveEnglish ? englishChapters : cloudChapters).map(({ title, link }) => ({ title, link })) } }, '')
 }
 for (const [path, text] of pages) {
   const target = resolve(output, path)
