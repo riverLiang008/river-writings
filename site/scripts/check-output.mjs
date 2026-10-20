@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../.vitepress/dist')
-const expected = ['en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
+const expected = ['en/literature/a-cloud/editions/selected-v1/thought-and-thought.html', 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
   'zh/literature/demo/index.html', 'zh/literature/demo/editions/sample-v1/morning.html',
   'zh/literature/demo/editions/sample-v1/window.html', 'zh/literature/a-cloud/index.html',
   ...['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought', 'arrogance-of-advice', 'reading-and-existence'].map(id => `zh/literature/a-cloud/editions/selected-v1/${id}.html`)]
@@ -56,5 +56,17 @@ if (!englishPoem || (englishPoem.match(/<br\s*\/?>/g) || []).length !== 3) throw
 const thirdEnglishPage = await readFile(resolve(output, 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html'), 'utf8')
 for (const marker of ['Translated into English by ChatGPT.', 'Moment A:', 'Moment B:', '/zh/literature/a-cloud/editions/selected-v1/blue-bicycle', '/en/literature/a-cloud/editions/selected-v1/nothing-happened']) {
   if (!thirdEnglishPage.includes(marker)) throw new Error(`Third English page missing: ${marker}`)
+}
+const fourthEnglishPage = await readFile(resolve(output, 'en/literature/a-cloud/editions/selected-v1/thought-and-thought.html'), 'utf8')
+for (const marker of ['Translated into English by ChatGPT.', 'class="chapter-subtitle"', 'provisional back-translations', 'id="translation-note"', '/zh/literature/a-cloud/editions/selected-v1/thought-and-thought', '/en/literature/a-cloud/editions/selected-v1/blue-bicycle']) {
+  if (!fourthEnglishPage.includes(marker)) throw new Error(`Fourth English page missing: ${marker}`)
+}
+for (let n = 1; n <= 7; n++) {
+  for (const marker of [`id="note-${n}"`, `id="ref-${n}"`, `href="#note-${n}"`, `href="#ref-${n}"`]) {
+    if (fourthEnglishPage.split(marker).length !== 2) throw new Error(`Missing or duplicate fourth English note link: ${marker}`)
+  }
+}
+for (const path of ['en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'zh/literature/a-cloud/editions/selected-v1/thought-and-thought.html']) {
+  if (!(await readFile(resolve(output, path), 'utf8')).includes('/en/literature/a-cloud/editions/selected-v1/thought-and-thought')) throw new Error(`Fourth translation link missing from ${path}`)
 }
 console.log(`Verified ${html.length} pages, Chinese and English notes, translation attribution, four poem lines and build boundaries.`)

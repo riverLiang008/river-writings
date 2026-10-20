@@ -124,7 +124,17 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--vp-c-brand-1);
 .source-notes { border-top: 1px solid var(--vp-c-divider); margin-top: 48px; padding-top: 16px; color: var(--vp-c-text-2); }
 .source-notes p { font-size: 14px; line-height: 1.9; }
 .source-notes span { font-family: var(--vp-font-family-base); font-size: 11px; display: block; margin-bottom: 8px; }
-.chapter-subtitle { color: var(--vp-c-text-2); }
+.vp-doc h1 + .chapter-subtitle {
+  margin: -12px 0 32px;
+  color: var(--vp-c-text-2);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: .02em;
+}
+@media (max-width: 640px) {
+  .vp-doc h1 + .chapter-subtitle { font-size: 15px; margin-bottom: 28px; }
+}
 
 /* Reading column: 784px container less 64px padding = 720px of text. */
 :root { --vp-c-bg: #f8fafc; --vp-c-text-1: #252b32; }
