@@ -31,6 +31,20 @@
         "sourceSha256": "3fa4290a96c818d68aee2c7626e06fe61233e6d05ed9fde63d7cfc7f96bb0db9",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "new-years-eve",
+      "title": "除夕，在乌鲁木齐",
+      "englishTitle": "Lunar New Year's Eve in Urumqi",
+      "date": "2026",
+      "file": "new-years-eve.md",
+      "sha256": "7099a1e47a405f8544951c4276095fa32537a5846d27f41329e02fb4f6059c28",
+      "translation": {
+        "file": "en/new-years-eve.md",
+        "sha256": "f06b22200794c64906dc6e74a8144e64cdda6a840085c8e2f528c4039480007f",
+        "sourceSha256": "7099a1e47a405f8544951c4276095fa32537a5846d27f41329e02fb4f6059c28",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }

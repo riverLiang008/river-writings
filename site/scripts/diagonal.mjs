@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto'
 export async function addDiagonal(add, site) {
   const directory = resolve(site, '../publication/releases/diagonal')
   const collection = JSON.parse(await readFile(resolve(directory, 'collection.json'), 'utf8'))
-  if (collection.id !== 'diagonal' || collection.edition !== 'selected-v1' || collection.entries.length !== 2 || collection.entries.some((entry, index) => entry.id !== ['go-to-xinjiang', 'z293'][index])) throw new Error('Unexpected diagonal release scope')
+  if (collection.id !== 'diagonal' || collection.edition !== 'selected-v1' || collection.entries.length !== 3 || collection.entries.some((entry, index) => entry.id !== ['go-to-xinjiang', 'z293', 'new-years-eve'][index])) throw new Error('Unexpected diagonal release scope')
   const validated = []
   for (const entry of collection.entries) {
   if (entry.file !== `${entry.id}.md` || entry.translation.file !== `en/${entry.id}.md`) throw new Error('Unexpected diagonal release files')
