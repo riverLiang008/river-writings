@@ -17,6 +17,20 @@
         "sourceSha256": "ba8a337077836886b69d081131bc995d1750d77e13f058e0cdaec6580181d183",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "z293",
+      "title": "Z293",
+      "englishTitle": "Z293",
+      "date": "2026",
+      "file": "z293.md",
+      "sha256": "3fa4290a96c818d68aee2c7626e06fe61233e6d05ed9fde63d7cfc7f96bb0db9",
+      "translation": {
+        "file": "en/z293.md",
+        "sha256": "863f6ed0bac471c4a71e395ece373daa3a0deaacc25661183468ad490ba3a058",
+        "sourceSha256": "3fa4290a96c818d68aee2c7626e06fe61233e6d05ed9fde63d7cfc7f96bb0db9",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
