@@ -28,15 +28,15 @@ The sunlight reflected so fiercely off the snow that I put on my sunglasses as s
 
 All the way from Yining to Kuerdening, I had been full of excitement. Yet now that we were here, I felt at a loss. I took a few aimless steps, breathing deeply of the forest air.
 
-The woman in red was asking the guide whether he had a drone. She wanted to try a camera move popular online called “pulling a spring onion from dry ground”—a shot in which the drone rises straight up. He smiled shyly. “I do!” he said, drawing out the last word a little. “But I'm not very good at filming.”
+The woman in red was asking the guide whether he had a drone. She wanted to try a shot popular online in which the drone rises straight up, nicknamed “pulling a spring onion from dry ground” in Chinese. He smiled shyly. “I do!” he said, drawing out the last word a little. “But I'm not very good at filming.”
 
 “Oh, come on. What kind of guide are you?” she said breezily. “Let me do it.”
 
-Hearing this, I hurried after them like a little shadow. Before I left, a friend who knew I was going to Xinjiang had made a point of showing me videos of the “spring onion” shot.
+Hearing this, I hurried after them like a little shadow. Before I left, a friend who knew I was going to Xinjiang had made a point of showing me videos of that rising drone shot.
 
 “It would be a shame to go all the way to Xinjiang and not get one of these,” my friend had said. For a while I had been very tempted to buy a drone of my own, but decided against it: I would only use it a few times a year.
 
-Was I about to have a “spring onion” video of my own? I followed them, a little excited. The woman in red looked as though she knew what she was doing. She directed us towards a low hill in the distance. Off we went in grand procession, leaving a trail of footprints in the snow.
+Was I about to have a video like that of my own? I followed them, a little excited. The woman in red looked as though she knew what she was doing. She directed us towards a low hill in the distance. Off we went in grand procession, leaving a trail of footprints in the snow.
 
 A, another woman in our group, was the first to take her place at the highest point. The woman in red took the drone from the guide, who rummaged in his backpack for the controller. The drone lifted off from her hands with a buzz. A was already posing. I watched from the side and tossed my backpack into the snow.
 
