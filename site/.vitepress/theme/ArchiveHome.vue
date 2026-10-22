@@ -22,7 +22,7 @@ const chapterPreview = () => frontmatter.value.archiveCollection.entries.slice(0
             <p class="collection-genre">{{ guide(collection).genre }}</p>
             <p class="collection-description">{{ guide(collection).description }}</p>
             <p v-if="collection.id === 'a-cloud'" class="collection-contents"><span>{{ frontmatter.archiveEnglish ? 'Contents: ' : '收录：' }}</span>{{ frontmatter.archiveEnglish ? `${frontmatter.archiveCollection.totalEntries} selected pieces in Chinese; ${frontmatter.archiveCollection.entries.length} in English` : `${frontmatter.archiveCollection.totalEntries} 篇精选` }} · {{ chapterPreview() }}</p>
-            <p v-else-if="collection.id === 'diagonal' && (frontmatter.diagonalCollection || frontmatter.localDiagonal)" class="collection-contents"><span>{{ frontmatter.archiveEnglish ? 'Contents: ' : '收录：' }}</span>{{ frontmatter.diagonalCollection ? (frontmatter.archiveEnglish ? `${frontmatter.diagonalCollection.totalEntries} pieces in Chinese and English` : `${frontmatter.diagonalCollection.totalEntries} 篇已上线（中英文）`) : '前言与八章 · 本地审稿预览' }}</p>
+            <p v-else-if="collection.id === 'diagonal' && (frontmatter.diagonalCollection || frontmatter.localDiagonal)" class="collection-contents"><span>{{ frontmatter.archiveEnglish ? 'Contents: ' : '收录：' }}</span>{{ frontmatter.diagonalCollection ? (frontmatter.archiveEnglish ? `${frontmatter.diagonalCollection.totalEntries} pieces in Chinese and English` : `${frontmatter.diagonalCollection.totalEntries} 篇已上线（中英文）`) : '八章 · 本地审稿预览' }}</p>
             <p v-else class="collection-contents"><span>{{ frontmatter.archiveEnglish ? 'Contents: ' : '收录：' }}</span>{{ guide(collection).contents }}</p>
           </div>
         </article>
