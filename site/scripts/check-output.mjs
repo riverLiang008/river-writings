@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../.vitepress/dist')
-const expected = [...['zh', 'en'].flatMap(lang => [`${lang}/literature/diagonal/index.html`, `${lang}/literature/diagonal/editions/selected-v1/new-years-eve.html`, `${lang}/literature/diagonal/editions/selected-v1/z293.html`, `${lang}/literature/diagonal/editions/selected-v1/go-to-xinjiang.html`]), 'en/literature/a-cloud/editions/selected-v1/thought-and-thought.html', 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
+const expected = [...['zh', 'en'].flatMap(lang => [`${lang}/literature/diagonal/index.html`, `${lang}/literature/diagonal/editions/selected-v1/train-through-xinjiang.html`, `${lang}/literature/diagonal/editions/selected-v1/new-years-eve.html`, `${lang}/literature/diagonal/editions/selected-v1/z293.html`, `${lang}/literature/diagonal/editions/selected-v1/go-to-xinjiang.html`]), 'en/literature/a-cloud/editions/selected-v1/thought-and-thought.html', 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
   'zh/literature/demo/index.html', 'zh/literature/demo/editions/sample-v1/morning.html',
   'zh/literature/demo/editions/sample-v1/window.html', 'zh/literature/a-cloud/index.html',
   ...['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought'].map(id => `zh/literature/a-cloud/editions/selected-v1/${id}.html`)]
@@ -99,4 +99,18 @@ for (const language of ['zh', 'en']) {
   const other = language === 'en' ? 'zh' : 'en'
   if (!third.includes(`/${other}/literature/diagonal/editions/selected-v1/new-years-eve`)) throw new Error('Missing third diagonal language switch')
   if (language === 'en' && !third.includes('Translated into English by ChatGPT.')) throw new Error('Missing third diagonal translation credit')
+}
+
+for (const language of ['zh', 'en']) {
+  const root = `/${language}/literature/diagonal/editions/selected-v1/`
+  const previous = await readFile(resolve(output, `${root.slice(1)}new-years-eve.html`), 'utf8')
+  const current = await readFile(resolve(output, `${root.slice(1)}train-through-xinjiang.html`), 'utf8')
+  if (!previous.includes(`${root}train-through-xinjiang`) || !current.includes(`${root}new-years-eve`)) throw new Error('Missing fourth diagonal chapter navigation')
+  const other = language === 'en' ? 'zh' : 'en'
+  if (!current.includes(`/${other}/literature/diagonal/editions/selected-v1/train-through-xinjiang`)) throw new Error('Missing fourth diagonal language switch')
+  if (language === 'en') {
+    for (const marker of ['Translated into English by ChatGPT.', 'remain to be verified', 'id="ref-1"', 'id="note-1"', 'href="#ref-1"', 'href="#note-1"']) {
+      if (!current.includes(marker)) throw new Error(`Missing fourth diagonal credit or source note: ${marker}`)
+    }
+  }
 }

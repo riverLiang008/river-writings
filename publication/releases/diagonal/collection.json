@@ -45,6 +45,20 @@
         "sourceSha256": "7099a1e47a405f8544951c4276095fa32537a5846d27f41329e02fb4f6059c28",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "train-through-xinjiang",
+      "title": "“坐着火车游新疆”",
+      "englishTitle": "“Through Xinjiang by Train”",
+      "date": "2026",
+      "file": "train-through-xinjiang.md",
+      "sha256": "d102ae597ac2957281dd24efe110e26138154a4e3181be7d516786133902b84e",
+      "translation": {
+        "file": "en/train-through-xinjiang.md",
+        "sha256": "fc0a66ae2c185d111966b988e4e119747f77a7126ba2720d2c9acf4740be1220",
+        "sourceSha256": "d102ae597ac2957281dd24efe110e26138154a4e3181be7d516786133902b84e",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
