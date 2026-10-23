@@ -4,7 +4,7 @@
 
 After Tianshan, I stayed in Urumqi for one more day. That day, I visited the Xinjiang Museum.
 
-The man I had spent Lunar New Year's Eve with had told me his only regret was not visiting it. I had also seen photos from the museum in the woman in red's WeChat Moments.
+The man I had spent Lunar New Year's Eve with had told me his only regret was not visiting it. I had also seen photos the woman in red had posted on WeChat from her visit to the museum.
 
 With my black backpack, I walked through the museum doors.
 
@@ -18,7 +18,7 @@ At that moment I thought of Alzheimer's disease—memories gradually breaking ap
 
 Among the mummified remains on display was a man whose identity had been established: Zhang Xiong. He had been Grand General of the Left Guard in the kingdom of Gaochang. It was an epitaph that had allowed later generations to identify him.
 
-I remember the description including the words “Grand General of the Left Guard of the illegitimate kingdom of Gaochang.” As I understood it then, the word “illegitimate”—wei (伪)—reflected the perspective from which Gaochang was written about after its fall.
+I remember the description referring to Zhang Xiong as “Grand General of the Left Guard of Gaochang,” with the character wei (伪) placed before the kingdom’s name. As I understood it then, the character questioned Gaochang’s political legitimacy, reflecting a perspective adopted after its fall.
 
 Leaving the museum, I went to a small restaurant for northwestern liangpi, handmade yoghurt and grilled lamb skewers. The warmth inside kept out the cold. The food left me deeply satisfied.
 
