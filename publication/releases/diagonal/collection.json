@@ -73,6 +73,20 @@
         "sourceSha256": "79b7d43d781bf2016c51abeb0e4249138cb1fb1e462a4f9d7bf8f0804703753a",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "sayram-lake",
+      "title": "赛里木湖",
+      "englishTitle": "Sayram Lake",
+      "date": "2026",
+      "file": "sayram-lake.md",
+      "sha256": "155704b70bfc0e645b8381bf579ba00affd76834f8cefb84458620e6a9ecc9c4",
+      "translation": {
+        "file": "en/sayram-lake.md",
+        "sha256": "bb77e700205c51e1fbb69f6493f1d4bd4ecc1553db47597fcf572ae6e80ccf8a",
+        "sourceSha256": "155704b70bfc0e645b8381bf579ba00affd76834f8cefb84458620e6a9ecc9c4",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
