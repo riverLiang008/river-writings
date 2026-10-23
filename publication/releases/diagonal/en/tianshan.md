@@ -38,7 +38,7 @@ Once we got off the shuttle, we were free to go our own ways.
 
 The air was sharp, the sunlight bright. Snow-covered conifers towered into the sky. I wandered slowly until I came to a little shop. The view was open here, with a few outdoor chairs for visitors to rest on. I ordered a milk tea and sat down.
 
-Tianchi was thick with ice, and people were playing on its surface. The peaks on either side had contours as sharp as knife cuts; the lake lay in the mountains' embrace. I imagined that long ago, before people intervened so roughly, this had perhaps been a world belonging only to birds and beasts, fish and insects.
+Tianchi was thick with ice, and people were playing on its surface. The peaks on either side had contours as sharp as knife cuts; the lake lay in the mountains' embrace. I imagined that long ago, before people intervened, this had perhaps been a world belonging only to birds and beasts, fish and insects.
 
 Sunlight reflected off the ice pierced my sunglasses, dazzling even through the lenses. I closed my eyes in the sun and sat for hours. I didn't want my journey filled with activities designed to excite the senses. I only wanted to sit quietly before the mountains and water, until the landscape took hold of my inner life like growing flowers and grasses.
 

@@ -94,11 +94,11 @@
       "englishTitle": "Tianshan",
       "date": "2026",
       "file": "tianshan.md",
-      "sha256": "928e5d003eb355c9859e2a74a89598d32c70de8ebc844569e1af5363655763d6",
+      "sha256": "6f21a83c03162b84bea97ae6ddf7614812778726e7d0bf71f410bcae405ad272",
       "translation": {
         "file": "en/tianshan.md",
-        "sha256": "3f6d4dca0c68c3d2d2924e8b039202848ba74301db52b1381ddbf6555f67dd39",
-        "sourceSha256": "928e5d003eb355c9859e2a74a89598d32c70de8ebc844569e1af5363655763d6",
+        "sha256": "19811949911fdc95c20ad59acf977f7f8c5e5d7d569a11e54ed79afa3d65c8f6",
+        "sourceSha256": "6f21a83c03162b84bea97ae6ddf7614812778726e7d0bf71f410bcae405ad272",
         "translatedBy": "ChatGPT"
       }
     }
