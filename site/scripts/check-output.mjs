@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../.vitepress/dist')
-const expected = [...['zh', 'en'].flatMap(lang => [`${lang}/literature/diagonal/index.html`, `${lang}/literature/diagonal/editions/selected-v1/tianshan.html`, `${lang}/literature/diagonal/editions/selected-v1/sayram-lake.html`, `${lang}/literature/diagonal/editions/selected-v1/kuerdening.html`, `${lang}/literature/diagonal/editions/selected-v1/train-through-xinjiang.html`, `${lang}/literature/diagonal/editions/selected-v1/new-years-eve.html`, `${lang}/literature/diagonal/editions/selected-v1/z293.html`, `${lang}/literature/diagonal/editions/selected-v1/go-to-xinjiang.html`]), 'en/literature/a-cloud/editions/selected-v1/thought-and-thought.html', 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
+const expected = [...['zh', 'en'].flatMap(lang => [`${lang}/literature/diagonal/index.html`, `${lang}/literature/diagonal/editions/selected-v1/epilogue.html`, `${lang}/literature/diagonal/editions/selected-v1/tianshan.html`, `${lang}/literature/diagonal/editions/selected-v1/sayram-lake.html`, `${lang}/literature/diagonal/editions/selected-v1/kuerdening.html`, `${lang}/literature/diagonal/editions/selected-v1/train-through-xinjiang.html`, `${lang}/literature/diagonal/editions/selected-v1/new-years-eve.html`, `${lang}/literature/diagonal/editions/selected-v1/z293.html`, `${lang}/literature/diagonal/editions/selected-v1/go-to-xinjiang.html`]), 'en/literature/a-cloud/editions/selected-v1/thought-and-thought.html', 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
   'zh/literature/demo/index.html', 'zh/literature/demo/editions/sample-v1/morning.html',
   'zh/literature/demo/editions/sample-v1/window.html', 'zh/literature/a-cloud/index.html',
   ...['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought'].map(id => `zh/literature/a-cloud/editions/selected-v1/${id}.html`)]
@@ -143,4 +143,14 @@ for (const language of ['zh', 'en']) {
   const other = language === 'en' ? 'zh' : 'en'
   if (!current.includes(`/${other}/literature/diagonal/editions/selected-v1/tianshan`)) throw new Error('Missing Tianshan language switch')
   if (language === 'en' && !current.includes('Translated into English by ChatGPT.')) throw new Error('Missing Tianshan translation credit')
+}
+
+for (const language of ['zh', 'en']) {
+  const root = `/${language}/literature/diagonal/editions/selected-v1/`
+  const previous = await readFile(resolve(output, `${root.slice(1)}tianshan.html`), 'utf8')
+  const current = await readFile(resolve(output, `${root.slice(1)}epilogue.html`), 'utf8')
+  if (!previous.includes(`${root}epilogue`) || !current.includes(`${root}tianshan`)) throw new Error('Missing epilogue navigation')
+  const other = language === 'en' ? 'zh' : 'en'
+  if (!current.includes(`/${other}/literature/diagonal/editions/selected-v1/epilogue`)) throw new Error('Missing epilogue language switch')
+  if (language === 'en' && (!current.includes('Translated into English by ChatGPT.') || !current.includes('the Xinjiang Museum'))) throw new Error('Missing epilogue credit or museum name')
 }
