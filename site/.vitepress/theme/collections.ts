@@ -16,7 +16,7 @@ export const collections = [
     en: { genre: 'Travel Writing', description: 'Landscapes, people and encounters from a journey through Xinjiang, with observations and reflections along the way.', contents: 'Planned as a complete travel narrative; the text is not yet available.' }
   },
   {
-    id: 'afternoon', title: '有风吹过的寻常下午',
+    id: 'afternoon', title: '有风吹过的寻常下午', englishTitle: 'Ordinary Afternoons, Whispering Wind',
     zh: { genre: '访谈与人物记录 / Conversations', description: '围绕与不同人的相遇和交谈，记录彼此的经历与生活片段。', contents: '拟按相遇与对话编排为系列，正文尚未上线。' },
     en: { genre: 'Conversations', description: 'Portraits drawn from meeting and talking with different people, gathering their experiences and fragments of everyday life.', contents: 'Planned as a series of encounters and conversations; the texts are not yet available.' }
   },

@@ -1,0 +1,22 @@
+{
+  "id": "afternoon",
+  "title": "有风吹过的寻常下午",
+  "englishTitle": "Ordinary Afternoons, Whispering Wind",
+  "edition": "selected-v1",
+  "entries": [
+    {
+      "id": "afternoon-01",
+      "title": "Afternoon No. 01",
+      "englishTitle": "Afternoon No. 01",
+      "date": "2026.05",
+      "file": "afternoon-01.md",
+      "sha256": "fc1acd962a0af4e9f6bc4ce76a482fc3853cd7a4801914b209a444f2d01902cd",
+      "translation": {
+        "file": "en/afternoon-01.md",
+        "sha256": "8f9c27471746077886e5e4952eb557ab7065f13721419900fa03e98ccee036ca",
+        "sourceSha256": "fc1acd962a0af4e9f6bc4ce76a482fc3853cd7a4801914b209a444f2d01902cd",
+        "translatedBy": "ChatGPT"
+      }
+    }
+  ]
+}
