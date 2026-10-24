@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto'
 export async function addAfternoon(add, site) {
   const directory = resolve(site, '../publication/releases/afternoon')
   const collection = JSON.parse(await readFile(resolve(directory, 'collection.json'), 'utf8'))
-  if (collection.id !== 'afternoon' || collection.edition !== 'selected-v1' || collection.entries.length !== 1 || collection.entries[0].id !== 'afternoon-01') throw new Error('Unexpected afternoon release scope')
+  if (collection.id !== 'afternoon' || collection.edition !== 'selected-v1' || collection.entries.length !== 2 || collection.entries.some((entry, index) => entry.id !== ['afternoon-01', 'afternoon-02'][index])) throw new Error('Unexpected afternoon release scope')
   const validated = []
   for (const entry of collection.entries) {
   if (entry.file !== `${entry.id}.md` || entry.translation.file !== `en/${entry.id}.md`) throw new Error('Unexpected afternoon release files')
