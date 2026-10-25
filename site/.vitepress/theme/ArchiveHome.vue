@@ -14,9 +14,9 @@ const chapterPreview = () => frontmatter.value.archiveCollection.entries.slice(0
     </header>
 
     <section class="archive-collections" aria-labelledby="collections-title">
-      <div class="archive-section-label"><h2 id="collections-title">{{ frontmatter.archiveEnglish ? 'COLLECTIONS' : '辑 / COLLECTIONS' }}</h2><span>INDEX · 001—006</span></div>
+      <div class="archive-section-label"><h2 id="collections-title">{{ frontmatter.archiveEnglish ? 'COLLECTIONS' : '辑 / COLLECTIONS' }}</h2><span>INDEX · 001—{{ String(collections.length).padStart(3, '0') }}</span></div>
       <div class="collection-grid">
-        <article v-for="(collection, index) in collections" :key="collection.id" class="archive-card work-shelf" :class="{ 'shelf-wide': [0, 3, 4].includes(index) }">
+        <article v-for="(collection, index) in collections" :key="collection.id" class="archive-card work-shelf" :class="{ 'shelf-wide': [0, 3].includes(index), 'shelf-full': index === 4 }">
           <div class="card-meta"><span>{{ String(index + 1).padStart(3, '0') }} / COLLECTION</span></div>
           <div class="card-title"><h3><a v-if="collection.id === 'a-cloud'" :href="withBase(frontmatter.archiveEnglish ? '/en/literature/a-cloud/' : '/zh/literature/a-cloud/')">{{ frontmatter.archiveEnglish ? collection.englishTitle : collection.title }} ↗</a><a v-else-if="collection.id === 'diagonal' && (frontmatter.diagonalCollection || frontmatter.localDiagonal)" :href="withBase(frontmatter.archiveEnglish ? '/en/literature/diagonal/' : '/zh/literature/diagonal/')">{{ frontmatter.archiveEnglish ? collection.englishTitle : collection.title }} ↗</a><a v-else-if="collection.id === 'afternoon' && frontmatter.afternoonCollection" :href="withBase(frontmatter.archiveEnglish ? '/en/literature/afternoon/' : '/zh/literature/afternoon/')">{{ frontmatter.archiveEnglish ? collection.englishTitle : collection.title }} ↗</a><template v-else>{{ collection.title }}</template></h3></div>
           <div class="collection-guide">

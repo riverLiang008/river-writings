@@ -21,11 +21,6 @@ export const collections = [
     en: { genre: 'Conversations', description: 'Portraits drawn from meeting and talking with different people, gathering their experiences and fragments of everyday life.', contents: 'Planned as a series of encounters and conversations; the texts are not yet available.' }
   },
   {
-    id: 'sunset', title: '晨光熹微中我们看见镜中的自己',
-    zh: { genre: '生活随笔 / Personal Essays', description: '从工作、独处和日常片刻出发，记录生活状态的变化，以及对记忆、时间和自我的观察。', contents: '拟从现有随笔中选编，篇目与顺序待定。' },
-    en: { genre: 'Personal Essays', description: 'Essays rooted in work, time alone and ordinary moments, tracing changes in life and reflecting on memory, time and the self.', contents: 'A selection from existing essays is planned; the contents and order are still to be decided.' }
-  },
-  {
     id: 'thought-experiments', title: '思想实验',
     zh: { genre: '思想写作 / Thought Experiments', description: '关于主体性、社会关系与自我处境的概念探索，以文章的形式梳理问题和假设。', contents: '拟收录相关概念文章，内部章节尚未上线。' },
     en: { genre: 'Thought Experiments', description: 'Conceptual essays on agency, social relations and the self, working through questions and hypotheses.', contents: 'Planned as a collection of conceptual essays; chapters are not yet available.' }

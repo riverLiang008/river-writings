@@ -116,6 +116,7 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--vp-c-brand-1);
 
 .work-shelf { min-height: 270px; justify-content: space-between; }
 .work-shelf.shelf-wide { grid-column: span 2; background: var(--vp-c-bg-alt); }
+.work-shelf.shelf-full { grid-column: 1 / -1; }
 .work-shelf .card-title { margin-top: 50px; margin-bottom: 20px; }
 .work-shelf .card-title h3 { font-size: clamp(23px, 2.4vw, 32px); line-height: 1.65; text-wrap: pretty; overflow-wrap: anywhere; }
 .archive-collections { margin-bottom: 64px; }
