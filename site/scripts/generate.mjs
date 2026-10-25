@@ -99,6 +99,11 @@ for (const [index, entry] of englishChapters.entries()) {
 pages.set('zh/literature/index.md', `---\ntitle: 文学作品\n---\n\n# 文学作品\n\n[${release.title}](${cloudRoot})\n`)
 const diagonalCollection = await addDiagonal(add, site)
 const afternoonCollection = await addAfternoon(add, site)
+const prefaceDir = resolve(site, '../publication/releases/preface')
+const prefaceRelease = JSON.parse(await readFile(resolve(prefaceDir, 'release.json'), 'utf8'))
+const preface = await readFile(resolve(prefaceDir, 'preface.md'), 'utf8')
+if (prefaceRelease.id !== 'preface' || prefaceRelease.file !== 'preface.md' || createHash('sha256').update(preface).digest('hex') !== prefaceRelease.sha256) throw new Error('Preface release validation failed')
+add('zh/preface.md', { title: '写在前面', lang: 'zh-CN', aside: false, outline: false, prev: false, next: false }, preface)
 for (const [path, archiveEnglish] of [['index.md', false], ['en/index.md', true]]) {
   add(path, { layout: 'home', ...(archiveEnglish ? { title: 'Writing Archive', lang: 'en', archiveEnglish: true } : {}), diagonalCollection, afternoonCollection, archiveCollection: { totalEntries: cloudChapters.length, entries: (archiveEnglish ? englishChapters : cloudChapters).map(({ title, link }) => ({ title, link })) } }, '')
 }

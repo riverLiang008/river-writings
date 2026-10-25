@@ -17,6 +17,7 @@ async function walk(path, prefix = '') {
 }
 const files = await walk(output)
 const html = files.filter((path) => path.endsWith('.html'))
+expected.push('zh/preface.html')
 if (html.length !== expected.length || expected.some((path) => !html.includes(path))) throw new Error('Unexpected page set in build')
 for (const path of files) {
   if (/\.pdf$|\.map$|\.obsidian|^sources\//.test(path)) throw new Error(`Forbidden build artifact: ${path}`)
