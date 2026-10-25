@@ -31,6 +31,20 @@
         "sourceSha256": "6a4dff98dbc3135b3ae8892c465ff6cac5c1fee35faeea6f41d460329a2d384f",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "afternoon-03",
+      "title": "Afternoon No. 03",
+      "englishTitle": "Afternoon No. 03",
+      "date": "2026.05",
+      "file": "afternoon-03.md",
+      "sha256": "49a173e677f95c4478a3154ff95b61bdcc68ff0e13247302f9155476e202c143",
+      "translation": {
+        "file": "en/afternoon-03.md",
+        "sha256": "6ecfb06f506204a5bde3359fb3091eaca6a163f2a580c6ffbcf152c3533aa53d",
+        "sourceSha256": "49a173e677f95c4478a3154ff95b61bdcc68ff0e13247302f9155476e202c143",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
