@@ -103,7 +103,10 @@ const prefaceDir = resolve(site, '../publication/releases/preface')
 const prefaceRelease = JSON.parse(await readFile(resolve(prefaceDir, 'release.json'), 'utf8'))
 const preface = await readFile(resolve(prefaceDir, 'preface.md'), 'utf8')
 if (prefaceRelease.id !== 'preface' || prefaceRelease.file !== 'preface.md' || createHash('sha256').update(preface).digest('hex') !== prefaceRelease.sha256) throw new Error('Preface release validation failed')
-add('zh/preface.md', { title: '写在前面', lang: 'zh-CN', aside: false, outline: false, prev: false, next: false }, preface)
+add('zh/preface.md', { title: '写在前面', lang: 'zh-CN', translationLink: '/en/preface', aside: false, outline: false, prev: false, next: false }, preface)
+const englishPreface = await readFile(resolve(prefaceDir, 'en/preface.md'), 'utf8')
+if (prefaceRelease.translation.file !== 'en/preface.md' || prefaceRelease.translation.sourceSha256 !== prefaceRelease.sha256 || createHash('sha256').update(englishPreface).digest('hex') !== prefaceRelease.translation.sha256 || !englishPreface.includes('Translated into English by ChatGPT.')) throw new Error('Preface translation validation failed')
+add('en/preface.md', { title: 'Preface', lang: 'en', translationLink: '/zh/preface', aside: false, outline: false, prev: false, next: false }, englishPreface)
 for (const [path, archiveEnglish] of [['index.md', false], ['en/index.md', true]]) {
   add(path, { layout: 'home', ...(archiveEnglish ? { title: 'Writing Archive', lang: 'en', archiveEnglish: true } : {}), diagonalCollection, afternoonCollection, archiveCollection: { totalEntries: cloudChapters.length, entries: (archiveEnglish ? englishChapters : cloudChapters).map(({ title, link }) => ({ title, link })) } }, '')
 }

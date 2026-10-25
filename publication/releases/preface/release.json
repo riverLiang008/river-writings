@@ -2,5 +2,11 @@
   "id": "preface",
   "language": "zh",
   "file": "preface.md",
-  "sha256": "f42128b2a0e6f20ff2232ee795e4d7c58c506c6ae6629f2c62ed3e9c39178bdc"
+  "sha256": "2fb817e3f71f6296a7348867c9f8771f8b0caa3b143dffc1c02041e3540e4588",
+  "translation": {
+    "file": "en/preface.md",
+    "sha256": "86a26bab3494bc7a9bd7905615f0b185e00866390c9f98abf2396ba61442ac1b",
+    "sourceSha256": "2fb817e3f71f6296a7348867c9f8771f8b0caa3b143dffc1c02041e3540e4588",
+    "translatedBy": "ChatGPT"
+  }
 }

@@ -10,7 +10,7 @@ const chapterPreview = () => frontmatter.value.archiveCollection.entries.slice(0
   <div class="archive-home">
     <header class="archive-intro">
       <div class="archive-heading"><h1>River<span>.</span></h1></div>
-      <p class="archive-preface"><template v-if="frontmatter.archiveEnglish">It feels like a pity that humans cannot observe themselves from the outside.<br>I suppose that is one of the original reasons why I started writing.</template><template v-else>觉得人类无法从外部观察自己是一种遗憾。<br>这大概是我写作的初衷之一。</template><a :href="withBase('/zh/preface')">{{ frontmatter.archiveEnglish ? 'PREFACE ↗' : '写在前面 ↗' }}</a></p>
+      <p class="archive-preface"><template v-if="frontmatter.archiveEnglish">It feels like a pity that we cannot observe ourselves from the outside.<br>Perhaps that is one of the reasons I began to write.</template><template v-else>觉得人类无法从外部观察自己是一种遗憾。<br>这大概是我写作的初衷之一。</template><a :href="withBase(frontmatter.archiveEnglish ? '/en/preface' : '/zh/preface')">{{ frontmatter.archiveEnglish ? 'PREFACE ↗' : '写在前面 ↗' }}</a></p>
     </header>
 
     <section class="archive-collections" aria-labelledby="collections-title">
