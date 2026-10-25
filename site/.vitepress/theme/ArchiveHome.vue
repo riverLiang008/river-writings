@@ -10,10 +10,11 @@ const chapterPreview = () => frontmatter.value.archiveCollection.entries.slice(0
   <div class="archive-home">
     <header class="archive-intro">
       <div class="archive-heading"><h1>River<span>.</span></h1></div>
+      <p class="archive-preface"><template v-if="frontmatter.archiveEnglish">It feels like a pity that humans cannot observe themselves from the outside.<br>I suppose that is one of the original reasons why I started writing.</template><template v-else>觉得人类无法从外部观察自己是一种遗憾。<br>这大概是我写作的初衷之一。</template><a :href="withBase('/zh/preface')">{{ frontmatter.archiveEnglish ? 'PREFACE ↗' : '写在前面 ↗' }}</a></p>
     </header>
 
     <section class="archive-collections" aria-labelledby="collections-title">
-      <div class="archive-section-label"><h2 id="collections-title">{{ frontmatter.archiveEnglish ? 'COLLECTIONS' : '辑 / COLLECTIONS' }}</h2><div class="archive-section-actions"><a :href="withBase('/zh/preface')">{{ frontmatter.archiveEnglish ? 'PREFACE ↗' : '写在前面 ↗' }}</a><span>INDEX · 001—006</span></div></div>
+      <div class="archive-section-label"><h2 id="collections-title">{{ frontmatter.archiveEnglish ? 'COLLECTIONS' : '辑 / COLLECTIONS' }}</h2><span>INDEX · 001—006</span></div>
       <div class="collection-grid">
         <article v-for="(collection, index) in collections" :key="collection.id" class="archive-card work-shelf" :class="{ 'shelf-wide': [0, 3, 4].includes(index) }">
           <div class="card-meta"><span>{{ String(index + 1).padStart(3, '0') }} / COLLECTION</span></div>
