@@ -45,6 +45,20 @@
         "sourceSha256": "c1cdbae540b50baadb56991e12987825d87c3cad04fd3eaa8d88c44d28f87af4",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "a-mark",
+      "title": "一处标记",
+      "englishTitle": "A Mark",
+      "date": "2026.01.18",
+      "file": "a-mark.md",
+      "sha256": "eebe1be2dbe63ded365a5e73a031aa399b93e448e5e1b18cae5b31dad9650062",
+      "translation": {
+        "file": "en/a-mark.md",
+        "sha256": "3c5f5d1a6c73bcd255d91f96364986365b99b9153be964493cd2fa799003682a",
+        "sourceSha256": "eebe1be2dbe63ded365a5e73a031aa399b93e448e5e1b18cae5b31dad9650062",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
