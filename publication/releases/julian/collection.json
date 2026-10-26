@@ -87,6 +87,20 @@
         "sourceSha256": "ecbc6b4c21e13e5594c6c8356debf58b3f82985018b5bd363acf360e013caa0c",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "a-day-asleep-in-the-restroom",
+      "title": "洗手间里睡着的一天",
+      "englishTitle": "A Day of Falling Asleep in the Toilets",
+      "date": "2026.01.09",
+      "file": "a-day-asleep-in-the-restroom.md",
+      "sha256": "69ef85a89b4bb8fe170679cff1aa121deced3a5d40dfcf2dcb35325188476fd3",
+      "translation": {
+        "file": "en/a-day-asleep-in-the-restroom.md",
+        "sha256": "0992d708b4381ba8c4a584f0a1d22bb76e80c5ebe2a4e8ea1c2563d7abf4bc42",
+        "sourceSha256": "69ef85a89b4bb8fe170679cff1aa121deced3a5d40dfcf2dcb35325188476fd3",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
