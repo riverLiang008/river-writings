@@ -101,6 +101,20 @@
         "sourceSha256": "69ef85a89b4bb8fe170679cff1aa121deced3a5d40dfcf2dcb35325188476fd3",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "i-want-freedom",
+      "title": "我想要自由",
+      "englishTitle": "I Want Freedom",
+      "date": "2026.01.07",
+      "file": "i-want-freedom.md",
+      "sha256": "46b78a24d56af921d16762a040f38d870c845dfc30510c679b4073c15c20b5d0",
+      "translation": {
+        "file": "en/i-want-freedom.md",
+        "sha256": "da8520b532f8230dcef7d639ed601a1acb886d032f59b3f14fbf23993198f018",
+        "sourceSha256": "46b78a24d56af921d16762a040f38d870c845dfc30510c679b4073c15c20b5d0",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
