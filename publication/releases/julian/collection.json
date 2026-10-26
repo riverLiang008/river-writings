@@ -59,6 +59,20 @@
         "sourceSha256": "eebe1be2dbe63ded365a5e73a031aa399b93e448e5e1b18cae5b31dad9650062",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "january-fourteenth",
+      "title": "一月十四日",
+      "englishTitle": "January Fourteenth",
+      "date": "2026.01.17",
+      "file": "january-fourteenth.md",
+      "sha256": "8c5d6d18bff9823dbe8ea2d60646219082773b871a1cc854e98f1b3b931d51af",
+      "translation": {
+        "file": "en/january-fourteenth.md",
+        "sha256": "6f33a5f46eb2e9f76347840c6bb6bcf1fc24ec40cd5ccc4022cddb72aafd266e",
+        "sourceSha256": "8c5d6d18bff9823dbe8ea2d60646219082773b871a1cc854e98f1b3b931d51af",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
