@@ -115,6 +115,20 @@
         "sourceSha256": "46b78a24d56af921d16762a040f38d870c845dfc30510c679b4073c15c20b5d0",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "when-freedom-falls-silent",
+      "title": "当自由沉默",
+      "englishTitle": "When Freedom Falls Silent",
+      "date": "2026.01.05",
+      "file": "when-freedom-falls-silent.md",
+      "sha256": "b7058587b667feb53ba3e44d8f6bfc6336a2440ff030e3efcf682a4d7905231f",
+      "translation": {
+        "file": "en/when-freedom-falls-silent.md",
+        "sha256": "8230fd663be393d2552fc88d2f60ec64eb4f229de84f471f5d46f459db613368",
+        "sourceSha256": "b7058587b667feb53ba3e44d8f6bfc6336a2440ff030e3efcf682a4d7905231f",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
