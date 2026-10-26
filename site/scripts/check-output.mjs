@@ -17,7 +17,7 @@ async function walk(path, prefix = '') {
 }
 const files = await walk(output)
 const html = files.filter((path) => path.endsWith('.html'))
-expected.push('zh/preface.html', 'en/preface.html', ...['zh', 'en'].flatMap(lang => [`${lang}/literature/julian/index.html`, ...['perhaps-an-unemployed-drifter', 'the-coin-is-still-in-the-air', 'between-two-worlds', 'a-mark', 'january-fourteenth', 'go-to-germany', 'a-day-asleep-in-the-restroom', 'i-want-freedom', 'when-freedom-falls-silent'].map(id => `${lang}/literature/julian/editions/selected-v1/${id}.html`)]))
+expected.push('zh/preface.html', 'en/preface.html', ...['zh', 'en'].flatMap(lang => [`${lang}/literature/julian/index.html`, ...['perhaps-an-unemployed-drifter', 'the-coin-is-still-in-the-air', 'between-two-worlds', 'a-mark', 'january-fourteenth', 'go-to-germany', 'a-day-asleep-in-the-restroom', 'i-want-freedom', 'when-freedom-falls-silent', 'the-clouds-too-are-still'].map(id => `${lang}/literature/julian/editions/selected-v1/${id}.html`)]))
 if (html.length !== expected.length || expected.some((path) => !html.includes(path))) throw new Error('Unexpected page set in build')
 for (const path of files) {
   if (/\.pdf$|\.map$|\.obsidian|^sources\//.test(path)) throw new Error(`Forbidden build artifact: ${path}`)

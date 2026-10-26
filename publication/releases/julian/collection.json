@@ -129,6 +129,20 @@
         "sourceSha256": "b7058587b667feb53ba3e44d8f6bfc6336a2440ff030e3efcf682a4d7905231f",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "the-clouds-too-are-still",
+      "title": "云也不动",
+      "englishTitle": "The Clouds, Too, Are Still",
+      "date": "2025.12.12",
+      "file": "the-clouds-too-are-still.md",
+      "sha256": "8a8e828892e1df4dce03f908b61ae48b9d33995e32a8cfecc844b3868eec0e8a",
+      "translation": {
+        "file": "en/the-clouds-too-are-still.md",
+        "sha256": "c01555ee5927614dcb0c24da2bafdc88298f47607a1e9f62db9fa9796ee95715",
+        "sourceSha256": "8a8e828892e1df4dce03f908b61ae48b9d33995e32a8cfecc844b3868eec0e8a",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
