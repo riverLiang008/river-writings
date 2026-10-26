@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto'
 export async function addJulian(add, site) {
   const directory = resolve(site, '../publication/releases/julian')
   const collection = JSON.parse(await readFile(resolve(directory, 'collection.json'), 'utf8'))
-  if (collection.id !== 'julian' || collection.edition !== 'selected-v1' || collection.entries.length !== 2 || collection.entries.some((entry, index) => entry.id !== ['perhaps-an-unemployed-drifter', 'the-coin-is-still-in-the-air'][index])) throw new Error('Unexpected julian release scope')
+  if (collection.id !== 'julian' || collection.edition !== 'selected-v1' || collection.entries.length !== 3 || collection.entries.some((entry, index) => entry.id !== ['perhaps-an-unemployed-drifter', 'the-coin-is-still-in-the-air', 'between-two-worlds'][index])) throw new Error('Unexpected julian release scope')
   const validated = []
   for (const entry of collection.entries) {
   if (entry.file !== `${entry.id}.md` || entry.translation.file !== `en/${entry.id}.md`) throw new Error('Unexpected julian release files')

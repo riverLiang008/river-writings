@@ -31,6 +31,20 @@
         "sourceSha256": "e35634f349b1d16bc049efe78c09a352eeb6d1fe60ac64620359af4484ff5fa8",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "between-two-worlds",
+      "title": "两个世界的交界处",
+      "englishTitle": "Between Two Worlds",
+      "date": "2026.01.24",
+      "file": "between-two-worlds.md",
+      "sha256": "c1cdbae540b50baadb56991e12987825d87c3cad04fd3eaa8d88c44d28f87af4",
+      "translation": {
+        "file": "en/between-two-worlds.md",
+        "sha256": "3082084b8dc70320a655217fd5f9bd850c5c34aa8eee6993b252db816d8466cc",
+        "sourceSha256": "c1cdbae540b50baadb56991e12987825d87c3cad04fd3eaa8d88c44d28f87af4",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
