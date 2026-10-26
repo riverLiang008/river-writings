@@ -1,0 +1,36 @@
+{
+  "id": "julian",
+  "title": "尤里安",
+  "englishTitle": "Julian",
+  "edition": "selected-v1",
+  "entries": [
+    {
+      "id": "perhaps-an-unemployed-drifter",
+      "title": "或许在未来我是一个无业游民",
+      "englishTitle": "Perhaps I'll Be an Unemployed Drifter Someday",
+      "date": "2026.02.08",
+      "file": "perhaps-an-unemployed-drifter.md",
+      "sha256": "367b5c59842df913b37b26b664a145e958ef1d1c546f56bedaf048faf36fcadb",
+      "translation": {
+        "file": "en/perhaps-an-unemployed-drifter.md",
+        "sha256": "b1f49fca0c483a62b871a99a45a9fe27b89188cc3365b6b1a8e66c117b08d472",
+        "sourceSha256": "367b5c59842df913b37b26b664a145e958ef1d1c546f56bedaf048faf36fcadb",
+        "translatedBy": "ChatGPT"
+      }
+    },
+    {
+      "id": "the-coin-is-still-in-the-air",
+      "title": "硬币已经抛出却还没落地",
+      "englishTitle": "The Coin Has Been Tossed, but Hasn't Landed Yet",
+      "date": "2026.02.01",
+      "file": "the-coin-is-still-in-the-air.md",
+      "sha256": "e35634f349b1d16bc049efe78c09a352eeb6d1fe60ac64620359af4484ff5fa8",
+      "translation": {
+        "file": "en/the-coin-is-still-in-the-air.md",
+        "sha256": "460857d8559c2fa9c4062ec26617178ace80e2e248714978d64c452af0bae8e3",
+        "sourceSha256": "e35634f349b1d16bc049efe78c09a352eeb6d1fe60ac64620359af4484ff5fa8",
+        "translatedBy": "ChatGPT"
+      }
+    }
+  ]
+}
