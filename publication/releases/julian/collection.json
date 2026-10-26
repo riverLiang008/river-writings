@@ -73,6 +73,20 @@
         "sourceSha256": "8c5d6d18bff9823dbe8ea2d60646219082773b871a1cc854e98f1b3b931d51af",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "go-to-germany",
+      "title": "“到德国去”",
+      "englishTitle": "“Go to Germany”",
+      "date": "2026.01.12",
+      "file": "go-to-germany.md",
+      "sha256": "ecbc6b4c21e13e5594c6c8356debf58b3f82985018b5bd363acf360e013caa0c",
+      "translation": {
+        "file": "en/go-to-germany.md",
+        "sha256": "6867b8915a41bdea1432a44605dcf19efe99a51b081547a79db1c93ff05b5b88",
+        "sourceSha256": "ecbc6b4c21e13e5594c6c8356debf58b3f82985018b5bd363acf360e013caa0c",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
