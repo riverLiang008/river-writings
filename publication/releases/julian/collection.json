@@ -199,6 +199,20 @@
         "sourceSha256": "f7f2fae95028c6247050baaf2ca246845f43f25a7a045ea2ac5f0dbd8f164df3",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "am-i-sliding-into-mediocrity",
+      "title": "我在滑向平庸吗？",
+      "englishTitle": "Am I Sliding into Mediocrity?",
+      "date": "2025.08.13",
+      "file": "am-i-sliding-into-mediocrity.md",
+      "sha256": "b0f6812c1d8267cb1b58a286b6d1891f21dfcb8b1719b229edb5f7a8f4d18e4b",
+      "translation": {
+        "file": "en/am-i-sliding-into-mediocrity.md",
+        "sha256": "3f57359d41c2fb93ce484ef907ea65f5a1fe83df106219cdc713e270721b45b6",
+        "sourceSha256": "b0f6812c1d8267cb1b58a286b6d1891f21dfcb8b1719b229edb5f7a8f4d18e4b",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
