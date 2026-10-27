@@ -171,6 +171,20 @@
         "sourceSha256": "ad4bb1c3af5ca215113d487013ac5eeabd7702c5587a16a35cad3e66a69ce9e4",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "living-below-the-trees",
+      "title": "生活在树下",
+      "englishTitle": "Living Below the Trees",
+      "date": "2025.09.24",
+      "file": "living-below-the-trees.md",
+      "sha256": "28b92f8e6f0d6e3c8132698a7b2a3715c0f6e128a2a0c590032ed3c6d8f56e3f",
+      "translation": {
+        "file": "en/living-below-the-trees.md",
+        "sha256": "58347668254c56cd3ccde8a22ceb4e4c71c1ce216bee5553eb99b64db60b0635",
+        "sourceSha256": "28b92f8e6f0d6e3c8132698a7b2a3715c0f6e128a2a0c590032ed3c6d8f56e3f",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
