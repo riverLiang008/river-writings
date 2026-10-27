@@ -213,6 +213,20 @@
         "sourceSha256": "b0f6812c1d8267cb1b58a286b6d1891f21dfcb8b1719b229edb5f7a8f4d18e4b",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "julian",
+      "title": "尤里安",
+      "englishTitle": "Julian",
+      "date": "2025.08.10",
+      "file": "julian.md",
+      "sha256": "579abaab97f0c3aab69616b4957a6b923fb1f09b5bdcefadbd6905646be8d8a8",
+      "translation": {
+        "file": "en/julian.md",
+        "sha256": "2751730470ee325ef12179f458fed3c20c9f6d0e5a64e6ab78936896aef988be",
+        "sourceSha256": "579abaab97f0c3aab69616b4957a6b923fb1f09b5bdcefadbd6905646be8d8a8",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
