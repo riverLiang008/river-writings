@@ -185,6 +185,20 @@
         "sourceSha256": "28b92f8e6f0d6e3c8132698a7b2a3715c0f6e128a2a0c590032ed3c6d8f56e3f",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "a-group-of-diary-entries",
+      "title": "日记二则",
+      "englishTitle": "Two Diary Entries",
+      "date": "2025.08",
+      "file": "a-group-of-diary-entries.md",
+      "sha256": "f7f2fae95028c6247050baaf2ca246845f43f25a7a045ea2ac5f0dbd8f164df3",
+      "translation": {
+        "file": "en/a-group-of-diary-entries.md",
+        "sha256": "fdaa66daef3751d4247100a97f91549098785ce58c2837bc9a388a693d5bb36b",
+        "sourceSha256": "f7f2fae95028c6247050baaf2ca246845f43f25a7a045ea2ac5f0dbd8f164df3",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
