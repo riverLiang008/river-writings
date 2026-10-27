@@ -157,6 +157,20 @@
         "sourceSha256": "51e6d79e61b52f9a3ce4d36d49e43edcad634e7faae1df004a4d65be900c5cae",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "i-once-had-great-prospects",
+      "title": "我曾经拥有远大前程",
+      "englishTitle": "I Once Had Great Prospects",
+      "date": "2025.11.08",
+      "file": "i-once-had-great-prospects.md",
+      "sha256": "ad4bb1c3af5ca215113d487013ac5eeabd7702c5587a16a35cad3e66a69ce9e4",
+      "translation": {
+        "file": "en/i-once-had-great-prospects.md",
+        "sha256": "4b2ab7d113d46bbbdfb0437097c141d946e0d5aab3987da6f3df3dc228fa40fe",
+        "sourceSha256": "ad4bb1c3af5ca215113d487013ac5eeabd7702c5587a16a35cad3e66a69ce9e4",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }
