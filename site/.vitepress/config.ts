@@ -21,7 +21,10 @@ export default defineConfig({
       label: 'English', lang: 'en', link: '/en/',
       description: 'River’s writing archive. Chinese originals and English translations.',
       themeConfig: {
-        nav: [{ text: 'GitHub', link: 'https://github.com/riverLiang008/river-writings' }],
+        nav: [
+          { text: 'GitHub', link: 'https://github.com/riverLiang008/river-writings' },
+          { text: 'ABOUT', link: '/en/about' }
+        ],
         search: { provider: 'local' },
         langMenuLabel: 'Language',
         returnToTopLabel: 'Back to top',

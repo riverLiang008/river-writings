@@ -44,7 +44,25 @@ function add(path, metadata, body) {
   pages.set(path, `---\n${Object.entries(metadata).filter(([, value]) => value !== undefined).map(([key, value]) => `${key}: ${JSON.stringify(value)}`).join('\n')}\n---\n\n${body}\n`)
 }
 add('zh/literature/index.md', { title: '文学作品' }, `# 文学作品\n\n以作品集为起点，沿着章节阅读。\n\n## [${collection.title}](${root})\n\n${collection.description}\n\n虚构样本 · ${chapters.length} 篇 · 中文\n\n[开始阅读 →](${chapters[0].link})\n\n---\n\n当前是网站阅读样本，正式作品将在整理和确认后加入。`)
-add('zh/about.md', { title: '关于' }, '# 关于\n\n这里是 River 的文学作品阅读空间。作品将以书籍、作品集和系列的方式呈现，让每一篇文字保留它所在的语境。\n\n目前可阅读《天空中飘来一朵云》四篇精选。其余作品陆续整理。')
+const personalWebsite = 'https://riverliang008.github.io/river-portfolio-hub/#home'
+const linkedIn = 'https://www.linkedin.com/in/%E5%8E%9A-%E6%A2%81-771282294/'
+const emails = ['houliang008@gmail.com', 'riverhouliang@qq.com', '1306715855@qq.com', 'HLIANG008@e.ntu.edu.sg']
+for (const language of ['zh', 'en']) {
+  const english = language === 'en'
+  add(`${language}/about.md`, { title: english ? 'About' : '关于', lang: english ? 'en' : 'zh-CN', translationLink: `/${english ? 'zh' : 'en'}/about`, aside: false, outline: false, prev: false, next: false }, `# ${english ? 'About' : '关于'}
+
+${english ? 'River’s writing archive brings together personal essays, travel writing, conversations, conceptual essays and video scripts. Works are organised into collections, preserving the context of each piece.' : '这里是 River 的写作档案，收录个人随笔、旅行写作、人物交谈、思想实验与视频文稿。作品以辑为线索编排，让每一篇文字保留它所在的语境。'}
+
+## ${english ? 'Find me' : '找到我'}
+
+- [${english ? 'Personal website' : '个人网站'} ↗](${personalWebsite})
+- [LinkedIn ↗](${linkedIn})
+
+## ${english ? 'Email' : '邮箱'}
+
+${emails.map(email => `- [${email} ↗](mailto:${email})`).join('\n')}
+`)
+}
 add('404.md', { title: '页面未找到' }, '# 这一页还没有文字\n\n[回到首页](/) · [浏览作品](/zh/literature/)')
 add(`zh/literature/${collection.id}/index.md`, { title: collection.title }, `# ${collection.title}\n\n${collection.description}\n\n虚构样本 · 中文 · ${collection.edition}\n\n[开始阅读 →](${chapters[0].link})\n\n## 目录\n\n${chapters.map((c, i) => `${i + 1}. [${c.title}](${c.link})`).join('\n')}\n\n---\n\n本作品仅用于试读网站，不属于作者现有作品。`)
 for (const [index, chapter] of chapters.entries()) {
