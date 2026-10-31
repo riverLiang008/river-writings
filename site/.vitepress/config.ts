@@ -21,7 +21,7 @@ export default defineConfig({
       label: 'English', lang: 'en', link: '/en/',
       description: 'River’s writing archive. Chinese originals and English translations.',
       themeConfig: {
-        nav: [{ text: 'ARCHIVE', link: '/en/' }],
+        nav: [{ text: 'GitHub', link: 'https://github.com/riverLiang008/river-writings' }],
         search: { provider: 'local' },
         langMenuLabel: 'Language',
         returnToTopLabel: 'Back to top',
@@ -37,7 +37,7 @@ export default defineConfig({
     logo: undefined,
     siteTitle: 'RIVER',
     nav: [
-      { text: '作品目录 / ARCHIVE', link: '/zh/literature/' },
+      { text: 'GitHub', link: 'https://github.com/riverLiang008/river-writings' },
       { text: '关于 / ABOUT', link: '/zh/about' }
     ],
     sidebar: [],
