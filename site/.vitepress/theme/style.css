@@ -31,7 +31,7 @@
   height: 32px;
   margin-right: 10px;
   border-radius: 50%;
-  background: url('../../public/images/river-portrait.jpg') 50% 14% / 220% auto no-repeat;
+  background: url('../../public/images/river-portrait.jpg') 31% 24% / 280% auto no-repeat;
 }
 .VPNavBar { border-bottom: 1px solid var(--vp-c-divider); }
 .VPNavBar .divider { display: none; }
