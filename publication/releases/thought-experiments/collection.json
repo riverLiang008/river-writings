@@ -20,6 +20,19 @@
         "sourceSha256": "c67b68c5d008ed43ca83c04b0fdfd3cb885bd5b2e5f05378f96a9d50e8885d61",
         "translatedBy": "ChatGPT"
       }
+    },
+    {
+      "id": "ad",
+      "title": "Agency Dynamic（AD）：主体性的条件与变化",
+      "englishTitle": "Agency Dynamic (AD): The Conditions and Dynamics of Agency",
+      "file": "ad.md",
+      "sha256": "5f2d87e4435719675b293c7431f33cbfdc69d8d16a497043d4628cdba0c117ad",
+      "translation": {
+        "file": "en/ad.md",
+        "sha256": "1f45c5e074ac1f82389757ace693748b2240c3ff8d487c42fdb84b8af36f169c",
+        "sourceSha256": "5f2d87e4435719675b293c7431f33cbfdc69d8d16a497043d4628cdba0c117ad",
+        "translatedBy": "ChatGPT"
+      }
     }
   ]
 }

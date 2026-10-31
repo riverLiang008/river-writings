@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto'
 export async function addThoughtExperiments(add, site) {
   const directory = resolve(site, '../publication/releases/thought-experiments')
   const collection = JSON.parse(await readFile(resolve(directory, 'collection.json'), 'utf8'))
-  if (collection.id !== 'thought-experiments' || collection.edition !== 'selected-v1' || collection.entries.length !== 1 || collection.entries.some((entry, index) => entry.id !== ['sstm'][index])) throw new Error('Unexpected thought-experiments release scope')
+  if (collection.id !== 'thought-experiments' || collection.edition !== 'selected-v1' || collection.entries.length !== 2 || collection.entries.some((entry, index) => entry.id !== ['sstm', 'ad'][index])) throw new Error('Unexpected thought-experiments release scope')
   const image = await readFile(resolve(directory, 'sstm-graph.jpg'))
   const publicImage = await readFile(resolve(site, 'public/images/thought-experiments/sstm-graph.jpg'))
   if (collection.image.file !== 'sstm-graph.jpg' || createHash('sha256').update(image).digest('hex') !== collection.image.sha256 || !image.equals(publicImage)) throw new Error('Thought experiments image validation failed')
@@ -15,10 +15,10 @@ export async function addThoughtExperiments(add, site) {
   const texts = {}
   for (const [language, file, hash, title] of [['zh', entry.file, entry.sha256, entry.title], ['en', entry.translation.file, entry.translation.sha256, entry.englishTitle]]) {
     const text = await readFile(resolve(directory, file), 'utf8')
-    if (createHash('sha256').update(text).digest('hex') !== hash || !text.startsWith(`# ${title}\n`) || /<script|<iframe|@include|\{\{/im.test(text) || text.startsWith('---\n')) throw new Error('Julian release validation failed')
+    if (createHash('sha256').update(text).digest('hex') !== hash || !text.startsWith(`# ${title}\n`) || /<script|<iframe|@include|\{\{/im.test(text) || text.startsWith('---\n')) throw new Error('Thought experiments release validation failed')
     texts[language] = text
   }
-  if (entry.translation.sourceSha256 !== entry.sha256 || !texts.en.includes('Translated into English by ChatGPT.')) throw new Error('Julian translation validation failed')
+  if (entry.translation.sourceSha256 !== entry.sha256 || !texts.en.includes('Translated into English by ChatGPT.')) throw new Error('Thought experiments translation validation failed')
   validated.push({ ...entry, texts })
   }
   for (const language of ['zh', 'en']) {
