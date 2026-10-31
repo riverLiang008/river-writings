@@ -18,6 +18,7 @@ async function walk(path, prefix = '') {
 const files = await walk(output)
 const html = files.filter((path) => path.endsWith('.html'))
 expected.push('zh/preface.html', 'en/preface.html', ...['zh', 'en'].flatMap(lang => [`${lang}/literature/julian/index.html`, ...['perhaps-an-unemployed-drifter', 'the-coin-is-still-in-the-air', 'between-two-worlds', 'a-mark', 'january-fourteenth', 'go-to-germany', 'a-day-asleep-in-the-restroom', 'i-want-freedom', 'when-freedom-falls-silent', 'the-clouds-too-are-still', 'future-war-ruins', 'i-once-had-great-prospects', 'living-below-the-trees', 'a-group-of-diary-entries', 'am-i-sliding-into-mediocrity', 'julian'].map(id => `${lang}/literature/julian/editions/selected-v1/${id}.html`)]))
+expected.push(...['zh', 'en'].flatMap(lang => [`${lang}/literature/thought-experiments/index.html`, `${lang}/literature/thought-experiments/editions/selected-v1/sstm.html`]))
 if (html.length !== expected.length || expected.some((path) => !html.includes(path))) throw new Error('Unexpected page set in build')
 for (const path of files) {
   if (/\.pdf$|\.map$|\.obsidian|^sources\//.test(path)) throw new Error(`Forbidden build artifact: ${path}`)
@@ -188,4 +189,9 @@ for (const language of ['zh', 'en']) {
   if (!second.includes(`/${other}/literature/afternoon/editions/selected-v1/afternoon-02`)) throw new Error('Missing second afternoon language switch')
   if (language === 'en' && !second.includes('Translated into English by ChatGPT.')) throw new Error('Missing second afternoon credit')
   if (/Self-Introduction|Occupation/.test(second)) throw new Error('Private second afternoon introduction leaked')
+}
+
+for (const lang of ['zh', 'en']) {
+  const page = await readFile(resolve(output, lang + '/literature/thought-experiments/editions/selected-v1/sstm.html'), 'utf8')
+  if (!page.includes('mjx-container') || !page.includes('sstm-graph') || page.includes('Agency_Dynamic')) throw new Error('SSTM math/image verification failed')
 }

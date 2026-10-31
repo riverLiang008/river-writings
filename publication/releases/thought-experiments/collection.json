@@ -1,0 +1,25 @@
+{
+  "id": "thought-experiments",
+  "title": "思想实验",
+  "englishTitle": "Thought Experiments",
+  "edition": "selected-v1",
+  "image": {
+    "file": "sstm-graph.jpg",
+    "sha256": "e5d6f1be7bc8a75e34ed77318891ae30c3190d715e56c30f7869ddd12618a9be"
+  },
+  "entries": [
+    {
+      "id": "sstm",
+      "title": "A Self–Structure Tension Model（SSTM）",
+      "englishTitle": "A Self–Structure Tension Model (SSTM)",
+      "file": "sstm.md",
+      "sha256": "c67b68c5d008ed43ca83c04b0fdfd3cb885bd5b2e5f05378f96a9d50e8885d61",
+      "translation": {
+        "file": "en/sstm.md",
+        "sha256": "589582d197fa82d9a140790ea02535facac996493deaca2fc91846840f058067",
+        "sourceSha256": "c67b68c5d008ed43ca83c04b0fdfd3cb885bd5b2e5f05378f96a9d50e8885d61",
+        "translatedBy": "ChatGPT"
+      }
+    }
+  ]
+}

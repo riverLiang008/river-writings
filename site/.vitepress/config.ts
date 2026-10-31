@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { fileURLToPath } from 'node:url'
 
 const base = process.env.SITE_BASE || '/'
 if (!base.startsWith('/') || !base.endsWith('/')) throw new Error('SITE_BASE must start and end with /')
@@ -8,6 +9,8 @@ export default defineConfig({
   description: 'River 的文学档案：以辑为线索，沿着文字阅读。',
   lang: 'zh-CN',
   srcDir: '.generated',
+  markdown: { math: true },
+  vite: { publicDir: fileURLToPath(new URL('../public', import.meta.url)) },
   base,
   cleanUrls: true,
   appearance: true,
