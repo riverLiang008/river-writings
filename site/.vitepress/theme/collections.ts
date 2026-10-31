@@ -24,5 +24,10 @@ export const collections = [
     id: 'thought-experiments', title: '思想实验',
     zh: { genre: '思想写作 / Thought Experiments', description: '关于主体性、社会关系与自我处境的概念探索，以文章的形式梳理问题和假设。', contents: '拟收录相关概念文章，内部章节尚未上线。' },
     en: { genre: 'Thought Experiments', description: 'Conceptual essays on agency, social relations and the self, working through questions and hypotheses.', contents: 'Planned as a collection of conceptual essays; chapters are not yet available.' }
+  },
+  {
+    id: 'nothing-serious', title: '不是什么大事', englishTitle: 'Nothing Serious',
+    zh: { genre: '视频随笔 / YouTube Lite', description: '从日常的问题出发，谈选择、关系、注意力，以及如何安排自己的生活。', contents: '' },
+    en: { genre: 'Video Essays / YouTube Lite', description: 'Questions from everyday life: choice, relationships, attention, and how to shape a life of one’s own.', contents: '' }
   }
 ]

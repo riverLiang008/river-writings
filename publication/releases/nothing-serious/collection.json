@@ -1,0 +1,45 @@
+{
+  "id": "nothing-serious",
+  "title": "不是什么大事",
+  "englishTitle": "Nothing Serious",
+  "edition": "selected-v1",
+  "entries": [
+    {
+      "id": "and-then",
+      "title": "And Then?",
+      "englishTitle": "And Then?",
+      "versions": {
+        "en": {
+          "file": "en/and-then.md",
+          "sha256": "7fece937bbbd2c87fb558bebc5eb645e4e8c2c33d2bfce4bfdde333738251a2b"
+        }
+      }
+    },
+    {
+      "id": "fuck-you-capacity",
+      "title": "所以呢？ | Fuck-You Capacity",
+      "englishTitle": "所以呢？ | Fuck-You Capacity",
+      "versions": {
+        "en": {
+          "file": "en/fuck-you-capacity.md",
+          "sha256": "0fe231c4e1cc6b0343f031e52d028708f38e56e6531c5150da2b17d3a572feeb"
+        }
+      }
+    },
+    {
+      "id": "the-cost-of-attention",
+      "title": "注意力的代价",
+      "englishTitle": "The Cost of Attention",
+      "versions": {
+        "zh": {
+          "file": "zh/the-cost-of-attention.md",
+          "sha256": "c0f1b5b5fe2959bad5b1eb87f1c059ae5181b2dcec34a16d688db9e630c4cbca"
+        },
+        "en": {
+          "file": "en/the-cost-of-attention.md",
+          "sha256": "2489a0d7a96d77ecaba748f4c195e27b4ad4b57a16958c970801c52ccbccc65e"
+        }
+      }
+    }
+  ]
+}

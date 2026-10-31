@@ -19,6 +19,7 @@ const files = await walk(output)
 const html = files.filter((path) => path.endsWith('.html'))
 expected.push('zh/preface.html', 'en/preface.html', ...['zh', 'en'].flatMap(lang => [`${lang}/literature/julian/index.html`, ...['perhaps-an-unemployed-drifter', 'the-coin-is-still-in-the-air', 'between-two-worlds', 'a-mark', 'january-fourteenth', 'go-to-germany', 'a-day-asleep-in-the-restroom', 'i-want-freedom', 'when-freedom-falls-silent', 'the-clouds-too-are-still', 'future-war-ruins', 'i-once-had-great-prospects', 'living-below-the-trees', 'a-group-of-diary-entries', 'am-i-sliding-into-mediocrity', 'julian'].map(id => `${lang}/literature/julian/editions/selected-v1/${id}.html`)]))
 expected.push(...['zh', 'en'].flatMap(lang => [`${lang}/literature/thought-experiments/index.html`, `${lang}/literature/thought-experiments/editions/selected-v1/sstm.html`]))
+expected.push('zh/literature/nothing-serious/index.html', 'en/literature/nothing-serious/index.html', 'zh/literature/nothing-serious/editions/selected-v1/the-cost-of-attention.html', ...['and-then', 'fuck-you-capacity', 'the-cost-of-attention'].map(id => 'en/literature/nothing-serious/editions/selected-v1/' + id + '.html'))
 if (html.length !== expected.length || expected.some((path) => !html.includes(path))) throw new Error('Unexpected page set in build')
 for (const path of files) {
   if (/\.pdf$|\.map$|\.obsidian|^sources\//.test(path)) throw new Error(`Forbidden build artifact: ${path}`)
@@ -195,3 +196,11 @@ for (const lang of ['zh', 'en']) {
   const page = await readFile(resolve(output, lang + '/literature/thought-experiments/editions/selected-v1/sstm.html'), 'utf8')
   if (!page.includes('mjx-container') || !page.includes('sstm-graph') || page.includes('Agency_Dynamic')) throw new Error('SSTM math/image verification failed')
 }
+
+for (const id of ['and-then', 'fuck-you-capacity', 'the-cost-of-attention']) {
+  const page = await readFile(resolve(output, 'en/literature/nothing-serious/editions/selected-v1/' + id + '.html'), 'utf8')
+  if (/Production Backlog|Production Notes|RECORD VO|Tonight.*Suggested Batch|SRT is master|Figma:/.test(page)) throw new Error('Production instructions leaked into Nothing Serious')
+  if (id !== 'the-cost-of-attention' && page.includes('/zh/literature/nothing-serious/editions/selected-v1/' + id)) throw new Error('Invented Chinese translation link')
+}
+const nothingSeriousZh = await readFile(resolve(output, 'zh/literature/nothing-serious/index.html'), 'utf8')
+if (!nothingSeriousZh.includes('/en/literature/nothing-serious/editions/selected-v1/and-then')) throw new Error('Missing English-only navigation')
