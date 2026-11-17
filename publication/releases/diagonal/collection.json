@@ -10,11 +10,11 @@
       "englishTitle": "“Off to Xinjiang”",
       "date": "2026",
       "file": "go-to-xinjiang.md",
-      "sha256": "ba8a337077836886b69d081131bc995d1750d77e13f058e0cdaec6580181d183",
+      "sha256": "ff50118dc7beb575e7aac1742fc4fb4a9b51ab9076315c276d0b8eecf861c638",
       "translation": {
         "file": "en/go-to-xinjiang.md",
-        "sha256": "151e96a6226d6cb265e0e961d7abbb63c6943fb85686c29a6eceee1b359bfbec",
-        "sourceSha256": "ba8a337077836886b69d081131bc995d1750d77e13f058e0cdaec6580181d183",
+        "sha256": "880cb003c4c3f07ff7545a310169224fdd82936ef60c235693a2ce079312c278",
+        "sourceSha256": "ff50118dc7beb575e7aac1742fc4fb4a9b51ab9076315c276d0b8eecf861c638",
         "translatedBy": "ChatGPT"
       }
     },

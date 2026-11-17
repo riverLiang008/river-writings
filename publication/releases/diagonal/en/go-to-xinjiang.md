@@ -4,26 +4,6 @@
 
 ## I
 
-The idea began with an argument with my parents. Work was wearing me down, and I was at my lowest.
-
-“Isn't that just what life is like? What work is like?” my mother said.
-
-“But I'm miserable!” I said.
-
-My mother fell silent. Then came my father's angry voice: “What exactly do you want to do.”
-
-He paused for a few seconds, then asked again: “What exactly do you want to do.”
-
-I fell silent too.
-
-“Anything else you want to say.”
-
-“No.” I hung up.
-
-“I'm not coming home for Lunar New Year,” I wrote to my mother on WeChat.
-
-## II
-
 “Off to Xinjiang”—at first it was just an idea born of defiance. Later it became a rhythm—job applications, interviews, slowly planning the trip. Meanwhile, what I wanted was becoming clearer too—perhaps I was looking for somewhere far away to wash the dust off me.
 
 On the day the wind from the Tianshan Mountains blows over my whole body, will I come alive again?
@@ -32,11 +12,11 @@ Two weeks later, I had an offer for a new job. The travel gear I had ordered on 
 
 “Be brave and do what you want to do. You'll have fewer regrets that way,” my mother told me. When my father learned that I really wasn't coming home for New Year, he was taken aback. He checked with my mother: “She's really not coming back?” At last he let out a long sigh. “All grown up, earning her own money. Can't tell her what to do anymore.”
 
-## III
+## II
 
 On the day I left, I got up at 4:40 a.m. to catch an early train. It was still dark, with a light rain falling. The station entrance was already packed with people: adults, children, and… students. They were probably all going home for New Year. A year ago I had been a student too, but I wasn't one anymore. I peeled a banana for breakfast and tucked the skin into my backpack when I had finished. Then the display changed from “Waiting” to “Boarding,” and I got on the first train of my journey.
 
-## IV
+## III
 
 For the first leg, I bought a standing-room-only ticket. Shenzhen to Hengyang. Seven hours.
 
@@ -56,7 +36,7 @@ When we reached the seat, I put down my small bag and was about to stow the big 
 
 I was about to explain—the pack had a suspension system to distribute the weight. Then I thought that would probably be unnecessary, and said nothing.
 
-## V
+## IV
 
 A young couple sat across from me in the dining car.
 
@@ -72,7 +52,7 @@ The woman selling dining-car seats came over and held out a QR code on her phone
 
 The scenery slipped backwards. The young couple opposite sat in silence.
 
-## VI
+## V
 
 A girl got on partway through the journey. She was about thirteen or fourteen, with elaborate press-on nails and a little pink bag. “Big sister, is anyone sitting here?” she asked in a sweet, girlish voice. “No. Go ahead,” I said warmly. She sat down beside me.
 
@@ -82,7 +62,7 @@ She seemed interested in me. We didn't talk much, but she liked calling me “bi
 
 And so the girl, the couple and I sat at one table in the dining car, sharing a few brief hours of our lives.
 
-## VII
+## VI
 
 It was already afternoon when I reached Hengyang. Coming out of the station, I felt lost for a moment.
 
