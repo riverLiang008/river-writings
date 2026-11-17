@@ -2,7 +2,7 @@ import { readFile, readdir } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../.vitepress/dist')
-const expected = [...['zh', 'en'].flatMap(lang => [`${lang}/literature/afternoon/index.html`, `${lang}/literature/afternoon/editions/selected-v1/afternoon-03.html`, `${lang}/literature/afternoon/editions/selected-v1/afternoon-02.html`, `${lang}/literature/afternoon/editions/selected-v1/afternoon-01.html`]), ...['zh', 'en'].flatMap(lang => [`${lang}/literature/diagonal/index.html`, `${lang}/literature/diagonal/editions/selected-v1/epilogue.html`, `${lang}/literature/diagonal/editions/selected-v1/tianshan.html`, `${lang}/literature/diagonal/editions/selected-v1/sayram-lake.html`, `${lang}/literature/diagonal/editions/selected-v1/kuerdening.html`, `${lang}/literature/diagonal/editions/selected-v1/train-through-xinjiang.html`, `${lang}/literature/diagonal/editions/selected-v1/new-years-eve.html`, `${lang}/literature/diagonal/editions/selected-v1/z293.html`, `${lang}/literature/diagonal/editions/selected-v1/go-to-xinjiang.html`]), 'en/literature/a-cloud/editions/selected-v1/thought-and-thought.html', 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
+const expected = [...['zh', 'en'].flatMap(lang => [`${lang}/literature/diagonal/index.html`, `${lang}/literature/diagonal/editions/selected-v1/epilogue.html`, `${lang}/literature/diagonal/editions/selected-v1/tianshan.html`, `${lang}/literature/diagonal/editions/selected-v1/sayram-lake.html`, `${lang}/literature/diagonal/editions/selected-v1/kuerdening.html`, `${lang}/literature/diagonal/editions/selected-v1/train-through-xinjiang.html`, `${lang}/literature/diagonal/editions/selected-v1/new-years-eve.html`, `${lang}/literature/diagonal/editions/selected-v1/z293.html`, `${lang}/literature/diagonal/editions/selected-v1/go-to-xinjiang.html`]), 'en/literature/a-cloud/editions/selected-v1/thought-and-thought.html', 'en/literature/a-cloud/editions/selected-v1/blue-bicycle.html', 'index.html', 'en/index.html', 'en/literature/a-cloud/index.html', 'en/literature/a-cloud/editions/selected-v1/sleepwalker.html', 'en/literature/a-cloud/editions/selected-v1/nothing-happened.html', '404.html', 'zh/about.html', 'zh/literature/index.html',
   'zh/literature/demo/index.html', 'zh/literature/demo/editions/sample-v1/morning.html',
   'zh/literature/demo/editions/sample-v1/window.html', 'zh/literature/a-cloud/index.html',
   ...['sleepwalker', 'nothing-happened', 'blue-bicycle', 'thought-and-thought'].map(id => `zh/literature/a-cloud/editions/selected-v1/${id}.html`)]
@@ -16,6 +16,7 @@ async function walk(path, prefix = '') {
   return results
 }
 const files = await walk(output)
+if (files.some(path => /afternoon/i.test(path))) throw new Error('Withdrawn afternoon files leaked into build')
 const html = files.filter((path) => path.endsWith('.html'))
 expected.push('zh/preface.html', 'en/preface.html', ...['zh', 'en'].flatMap(lang => [`${lang}/literature/julian/index.html`, ...['perhaps-an-unemployed-drifter', 'the-coin-is-still-in-the-air', 'between-two-worlds', 'a-mark', 'january-fourteenth', 'go-to-germany', 'a-day-asleep-in-the-restroom', 'i-want-freedom', 'when-freedom-falls-silent', 'the-clouds-too-are-still', 'future-war-ruins', 'i-once-had-great-prospects', 'living-below-the-trees', 'a-group-of-diary-entries', 'am-i-sliding-into-mediocrity', 'julian'].map(id => `${lang}/literature/julian/editions/selected-v1/${id}.html`)]))
 expected.push(...['zh', 'en'].flatMap(lang => [`${lang}/literature/thought-experiments/index.html`, `${lang}/literature/thought-experiments/editions/selected-v1/sstm.html`, `${lang}/literature/thought-experiments/editions/selected-v1/ad.html`]))
@@ -26,6 +27,7 @@ for (const path of files) {
   if (/\.pdf$|\.map$|\.obsidian|^sources\//.test(path)) throw new Error(`Forbidden build artifact: ${path}`)
   if (/\.(html|js|json|css)$/.test(path)) {
     const text = await readFile(resolve(output, path), 'utf8')
+    if (/literature\/afternoon\/|有风吹过的寻常下午|Ordinary Afternoons, Whispering Wind/.test(text)) throw new Error(`Withdrawn afternoon reference in ${path}`)
     if (/SSTM_Original|Agency_Dynamic_Original|River_Editorial_|sources\/materials|sources\/pdf/.test(text)) throw new Error(`Internal material reference in ${path}`)
   }
 }
@@ -157,40 +159,6 @@ for (const language of ['zh', 'en']) {
   const other = language === 'en' ? 'zh' : 'en'
   if (!current.includes(`/${other}/literature/diagonal/editions/selected-v1/epilogue`)) throw new Error('Missing epilogue language switch')
   if (language === 'en' && (!current.includes('Translated into English by ChatGPT.') || !current.includes('the Xinjiang Museum'))) throw new Error('Missing epilogue credit or museum name')
-}
-
-for (const language of ['zh', 'en']) {
-  const root = `/${language}/literature/afternoon/`
-  const link = `${root}editions/selected-v1/afternoon-01`
-  const chapter = await readFile(resolve(output, `${link.slice(1)}.html`), 'utf8')
-  const index = await readFile(resolve(output, `${root.slice(1)}index.html`), 'utf8')
-  const home = await readFile(resolve(output, language === 'en' ? 'en/index.html' : 'index.html'), 'utf8')
-  const other = language === 'en' ? 'zh' : 'en'
-  if (!home.includes(root) || !index.includes(link) || !chapter.includes(`/${other}/literature/afternoon/editions/selected-v1/afternoon-01`)) throw new Error('Missing afternoon collection or language link')
-  if (language === 'en' && !chapter.includes('Translated into English by ChatGPT.')) throw new Error('Missing afternoon translation credit')
-  if (/Self-Introduction|Incoming Product Professional|Occupation/.test(chapter)) throw new Error('Private afternoon introduction leaked')
-}
-for (const language of ['zh', 'en']) {
-  const root = `/${language}/literature/afternoon/`
-  const thirdLink = `${root}editions/selected-v1/afternoon-03`
-  const third = await readFile(resolve(output, `${thirdLink.slice(1)}.html`), 'utf8')
-  const second = await readFile(resolve(output, `${root.slice(1)}editions/selected-v1/afternoon-02.html`), 'utf8')
-  const index = await readFile(resolve(output, `${root.slice(1)}index.html`), 'utf8')
-  const other = language === 'en' ? 'zh' : 'en'
-  if (!index.includes(thirdLink) || !second.includes(thirdLink) || !third.includes(`${root}editions/selected-v1/afternoon-02`)) throw new Error('Missing third afternoon contents or navigation')
-  if (!third.includes(`/${other}/literature/afternoon/editions/selected-v1/afternoon-03`)) throw new Error('Missing third afternoon language switch')
-  if (language === 'en' && !third.includes('Translated into English by ChatGPT.')) throw new Error('Missing third afternoon translation credit')
-}
-
-for (const language of ['zh', 'en']) {
-  const root = `/${language}/literature/afternoon/editions/selected-v1/`
-  const first = await readFile(resolve(output, `${root.slice(1)}afternoon-01.html`), 'utf8')
-  const second = await readFile(resolve(output, `${root.slice(1)}afternoon-02.html`), 'utf8')
-  if (!first.includes(`${root}afternoon-02`) || !second.includes(`${root}afternoon-01`)) throw new Error('Missing second afternoon navigation')
-  const other = language === 'en' ? 'zh' : 'en'
-  if (!second.includes(`/${other}/literature/afternoon/editions/selected-v1/afternoon-02`)) throw new Error('Missing second afternoon language switch')
-  if (language === 'en' && !second.includes('Translated into English by ChatGPT.')) throw new Error('Missing second afternoon credit')
-  if (/Self-Introduction|Occupation/.test(second)) throw new Error('Private second afternoon introduction leaked')
 }
 
 for (const lang of ['zh', 'en']) {

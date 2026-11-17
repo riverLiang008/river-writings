@@ -3,7 +3,6 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createHash } from 'node:crypto'
 import { addDiagonal } from './diagonal.mjs'
-import { addAfternoon } from './afternoon.mjs'
 import { addJulian } from './julian.mjs'
 import { addThoughtExperiments } from './thought-experiments.mjs'
 import { addNothingSerious } from './nothing-serious.mjs'
@@ -119,7 +118,6 @@ for (const [index, entry] of englishChapters.entries()) {
 }
 pages.set('zh/literature/index.md', `---\ntitle: 文学作品\n---\n\n# 文学作品\n\n[${release.title}](${cloudRoot})\n`)
 const diagonalCollection = await addDiagonal(add, site)
-const afternoonCollection = await addAfternoon(add, site)
 const julianCollection = await addJulian(add, site)
 const thoughtExperimentsCollection = await addThoughtExperiments(add, site)
 const nothingSeriousCollection = await addNothingSerious(add, site)
@@ -132,7 +130,7 @@ const englishPreface = await readFile(resolve(prefaceDir, 'en/preface.md'), 'utf
 if (prefaceRelease.translation.file !== 'en/preface.md' || prefaceRelease.translation.sourceSha256 !== prefaceRelease.sha256 || createHash('sha256').update(englishPreface).digest('hex') !== prefaceRelease.translation.sha256 || !englishPreface.includes('Translated into English by ChatGPT.')) throw new Error('Preface translation validation failed')
 add('en/preface.md', { title: 'Preface', lang: 'en', translationLink: '/zh/preface', aside: false, outline: false, prev: false, next: false }, englishPreface)
 for (const [path, archiveEnglish] of [['index.md', false], ['en/index.md', true]]) {
-  add(path, { layout: 'home', ...(archiveEnglish ? { title: 'Writing Archive', lang: 'en', archiveEnglish: true } : {}), diagonalCollection, afternoonCollection, julianCollection, thoughtExperimentsCollection, nothingSeriousCollection, archiveCollection: { totalEntries: cloudChapters.length, entries: (archiveEnglish ? englishChapters : cloudChapters).map(({ title, link }) => ({ title, link })) } }, '')
+  add(path, { layout: 'home', ...(archiveEnglish ? { title: 'Writing Archive', lang: 'en', archiveEnglish: true } : {}), diagonalCollection, julianCollection, thoughtExperimentsCollection, nothingSeriousCollection, archiveCollection: { totalEntries: cloudChapters.length, entries: (archiveEnglish ? englishChapters : cloudChapters).map(({ title, link }) => ({ title, link })) } }, '')
 }
 for (const [path, text] of pages) {
   const target = resolve(output, path)
