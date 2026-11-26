@@ -20,7 +20,7 @@ if (files.some(path => /afternoon/i.test(path))) throw new Error('Withdrawn afte
 const html = files.filter((path) => path.endsWith('.html'))
 expected.push('zh/preface.html', 'en/preface.html', ...['zh', 'en'].flatMap(lang => [`${lang}/literature/julian/index.html`, ...['perhaps-an-unemployed-drifter', 'the-coin-is-still-in-the-air', 'between-two-worlds', 'a-mark', 'january-fourteenth', 'go-to-germany', 'a-day-asleep-in-the-restroom', 'i-want-freedom', 'when-freedom-falls-silent', 'the-clouds-too-are-still', 'future-war-ruins', 'i-once-had-great-prospects', 'living-below-the-trees', 'a-group-of-diary-entries', 'am-i-sliding-into-mediocrity', 'julian'].map(id => `${lang}/literature/julian/editions/selected-v1/${id}.html`)]))
 expected.push(...['zh', 'en'].flatMap(lang => [`${lang}/literature/thought-experiments/index.html`, `${lang}/literature/thought-experiments/editions/selected-v1/sstm.html`, `${lang}/literature/thought-experiments/editions/selected-v1/ad.html`]))
-expected.push('zh/literature/nothing-serious/index.html', 'en/literature/nothing-serious/index.html', 'zh/literature/nothing-serious/editions/selected-v1/the-cost-of-attention.html', ...['and-then', 'fuck-you-capacity', 'the-cost-of-attention'].map(id => 'en/literature/nothing-serious/editions/selected-v1/' + id + '.html'))
+expected.push('zh/literature/nothing-serious/index.html', 'en/literature/nothing-serious/index.html', 'zh/literature/nothing-serious/editions/selected-v1/the-cost-of-attention.html', 'en/literature/nothing-serious/editions/selected-v1/ai-and-the-unequal-starting-point.html')
 expected.push('en/about.html')
 if (html.length !== expected.length || expected.some((path) => !html.includes(path))) throw new Error('Unexpected page set in build')
 for (const path of files) {
@@ -166,13 +166,23 @@ for (const lang of ['zh', 'en']) {
   if (!page.includes('mjx-container') || !page.includes('sstm-graph') || page.includes('Agency_Dynamic')) throw new Error('SSTM math/image verification failed')
 }
 
+const nothingSeriousEn = 'en/literature/nothing-serious/'
+const nothingSeriousIndex = await readFile(resolve(output, nothingSeriousEn, 'index.html'), 'utf8')
+const essayPath = 'editions/selected-v1/ai-and-the-unequal-starting-point'
+if (!nothingSeriousIndex.includes(essayPath)) throw new Error('New Nothing Serious essay is missing from the contents')
+const essay = await readFile(resolve(output, nothingSeriousEn, essayPath + '.html'), 'utf8')
+if (!essay.includes('https://medium.com/@houliang008/ai-and-the-unequal-starting-point-5d72460ad0ab')) throw new Error('Medium link is missing from Nothing Serious')
+if (/Production Backlog|Production Notes|RECORD VO|Tonight.*Suggested Batch|SRT is master|Figma:/.test(essay)) throw new Error('Production instructions leaked into Nothing Serious')
+
 for (const id of ['and-then', 'fuck-you-capacity', 'the-cost-of-attention']) {
-  const page = await readFile(resolve(output, 'en/literature/nothing-serious/editions/selected-v1/' + id + '.html'), 'utf8')
-  if (/Production Backlog|Production Notes|RECORD VO|Tonight.*Suggested Batch|SRT is master|Figma:/.test(page)) throw new Error('Production instructions leaked into Nothing Serious')
-  if (id !== 'the-cost-of-attention' && page.includes('/zh/literature/nothing-serious/editions/selected-v1/' + id)) throw new Error('Invented Chinese translation link')
+  const oldPath = 'editions/selected-v1/' + id
+  if (nothingSeriousIndex.includes(oldPath)) throw new Error('Retired Nothing Serious essay is still listed')
+  const oldPage = await readFile(resolve(output, nothingSeriousEn, oldPath + '.html')).catch(error => {
+    if (error.code !== 'ENOENT') throw error
+    return null
+  })
+  if (oldPage) throw new Error('Retired Nothing Serious essay was still generated: ' + id)
 }
-const nothingSeriousZh = await readFile(resolve(output, 'zh/literature/nothing-serious/index.html'), 'utf8')
-if (!nothingSeriousZh.includes('/en/literature/nothing-serious/editions/selected-v1/and-then')) throw new Error('Missing English-only navigation')
 
 for (const lang of ['zh', 'en']) {
   const page = await readFile(resolve(output, lang + '/literature/thought-experiments/editions/selected-v1/ad.html'), 'utf8')

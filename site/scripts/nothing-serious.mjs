@@ -5,12 +5,12 @@ import { createHash } from 'node:crypto'
 export async function addNothingSerious(add, site) {
   const directory = resolve(site, '../publication/releases/nothing-serious')
   const collection = JSON.parse(await readFile(resolve(directory, 'collection.json'), 'utf8'))
-  const scope = ['and-then', 'fuck-you-capacity', 'the-cost-of-attention']
-  if (collection.id !== 'nothing-serious' || collection.edition !== 'selected-v1' || collection.entries.length !== 3 || collection.entries.some((entry, i) => entry.id !== scope[i])) throw new Error('Unexpected Nothing Serious release scope')
+  const scope = ['the-cost-of-attention', 'ai-and-the-unequal-starting-point']
+  if (collection.id !== 'nothing-serious' || collection.edition !== 'selected-v1' || collection.entries.length !== scope.length || collection.entries.some((entry, i) => entry.id !== scope[i])) throw new Error('Unexpected Nothing Serious release scope')
   const entries = []
   for (const entry of collection.entries) {
     const languages = Object.keys(entry.versions).sort().join(',')
-    if (languages !== (entry.id === 'the-cost-of-attention' ? 'en,zh' : 'en')) throw new Error('Unexpected Nothing Serious languages')
+    if (languages !== (entry.id === 'the-cost-of-attention' ? 'zh' : 'en')) throw new Error('Unexpected Nothing Serious languages')
     const texts = {}
     for (const [lang, version] of Object.entries(entry.versions)) {
       if (version.file !== `${lang}/${entry.id}.md`) throw new Error('Unexpected Nothing Serious file')
@@ -21,24 +21,24 @@ export async function addNothingSerious(add, site) {
     }
     entries.push({ ...entry, texts })
   }
-  const chapterLink = (entry, lang) => `/${entry.versions[lang] ? lang : 'en'}/literature/nothing-serious/editions/selected-v1/${entry.id}`
+  const chapterLink = (entry, lang) => `/${lang}/literature/nothing-serious/editions/selected-v1/${entry.id}`
   for (const lang of ['zh', 'en']) {
     const english = lang === 'en'
     const title = english ? collection.englishTitle : collection.title
     const root = `/${lang}/literature/nothing-serious/`
-    const chapters = entries.map(entry => ({ title: (!english && entry.versions.zh ? entry.title : entry.englishTitle) + (!english && !entry.versions.zh ? ' · English' : ''), link: chapterLink(entry, lang) }))
+    const localizedEntries = entries.filter(entry => entry.versions[lang])
+    const chapters = localizedEntries.map(entry => ({ title: english ? entry.englishTitle : entry.title, link: chapterLink(entry, lang) }))
     const contents = chapters.map((chapter, i) => `<li><a href="${(process.env.SITE_BASE || '/').slice(0, -1)}${chapter.link}"><span>${String(i + 1).padStart(2, '0')}</span><span>${chapter.title}</span></a></li>`).join('')
     add(`${root.slice(1)}index.md`, { title, lang: english ? 'en' : 'zh-CN', aside: false, outline: false }, `<div class="collection-book">
 <p class="collection-label">COLLECTION 006</p>
 
 # ${title}
 
-<p class="collection-info">${english ? 'YouTube Lite scripts · 3 pieces / 1 available in Chinese and English' : 'YouTube Lite 文稿 · 3 篇 / 其中 1 篇提供中英文'}</p>
+<p class="collection-info">${english ? (chapters.length === 1 ? '1 English essay' : `${chapters.length} English essays`) : `${chapters.length} 篇中文文章`}</p>
 <h2 class="contents-title">${english ? 'CONTENTS' : '目录 / CONTENTS'}</h2>
 <ol class="book-contents">${contents}</ol>
 </div>`)
-    for (const [i, entry] of entries.entries()) {
-      if (!entry.versions[lang]) continue
+    for (const [i, entry] of localizedEntries.entries()) {
       const other = english ? 'zh' : 'en'
       const neighbor = offset => chapters[i + offset] ? { text: chapters[i + offset].title, link: chapters[i + offset].link } : false
       add(`${chapterLink(entry, lang).slice(1)}.md`, {
@@ -49,5 +49,8 @@ export async function addNothingSerious(add, site) {
       }, entry.texts[lang])
     }
   }
-  return { totalEntries: 3, englishEntries: 3, chineseEntries: 1 }
+  return {
+    englishEntries: entries.filter(entry => entry.versions.en).length,
+    chineseEntries: entries.filter(entry => entry.versions.zh).length
+  }
 }
