@@ -25,6 +25,17 @@
           "sha256": "b51e87d28477f6883c46e3808507bc4a45ebefe40eff3d1557c07dc713083d82"
         }
       }
+    },
+    {
+      "id": "the-cost-of-being-needed",
+      "title": "The Cost of Being Needed",
+      "englishTitle": "The Cost of Being Needed",
+      "versions": {
+        "en": {
+          "file": "en/the-cost-of-being-needed.md",
+          "sha256": "73dbe539d0efc551c124f15c8e1cc65ed241b7e5da8b1608f24a743120440e57"
+        }
+      }
     }
   ]
 }

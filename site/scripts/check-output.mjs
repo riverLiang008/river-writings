@@ -20,7 +20,7 @@ if (files.some(path => /afternoon/i.test(path))) throw new Error('Withdrawn afte
 const html = files.filter((path) => path.endsWith('.html'))
 expected.push('zh/preface.html', 'en/preface.html', ...['zh', 'en'].flatMap(lang => [`${lang}/literature/julian/index.html`, ...['perhaps-an-unemployed-drifter', 'the-coin-is-still-in-the-air', 'between-two-worlds', 'a-mark', 'january-fourteenth', 'go-to-germany', 'a-day-asleep-in-the-restroom', 'i-want-freedom', 'when-freedom-falls-silent', 'the-clouds-too-are-still', 'future-war-ruins', 'i-once-had-great-prospects', 'living-below-the-trees', 'a-group-of-diary-entries', 'am-i-sliding-into-mediocrity', 'julian'].map(id => `${lang}/literature/julian/editions/selected-v1/${id}.html`)]))
 expected.push(...['zh', 'en'].flatMap(lang => [`${lang}/literature/thought-experiments/index.html`, `${lang}/literature/thought-experiments/editions/selected-v1/sstm.html`, `${lang}/literature/thought-experiments/editions/selected-v1/ad.html`]))
-expected.push('zh/literature/nothing-serious/index.html', 'en/literature/nothing-serious/index.html', 'zh/literature/nothing-serious/editions/selected-v1/the-cost-of-attention.html', 'en/literature/nothing-serious/editions/selected-v1/ai-and-the-unequal-starting-point.html')
+expected.push('zh/literature/nothing-serious/index.html', 'en/literature/nothing-serious/index.html', 'zh/literature/nothing-serious/editions/selected-v1/the-cost-of-attention.html', 'en/literature/nothing-serious/editions/selected-v1/ai-and-the-unequal-starting-point.html', 'en/literature/nothing-serious/editions/selected-v1/the-cost-of-being-needed.html')
 expected.push('en/about.html')
 if (html.length !== expected.length || expected.some((path) => !html.includes(path))) throw new Error('Unexpected page set in build')
 for (const path of files) {
@@ -168,6 +168,11 @@ for (const lang of ['zh', 'en']) {
 
 const nothingSeriousEn = 'en/literature/nothing-serious/'
 const nothingSeriousIndex = await readFile(resolve(output, nothingSeriousEn, 'index.html'), 'utf8')
+const newEssayPath = 'editions/selected-v1/the-cost-of-being-needed'
+if (!nothingSeriousIndex.includes(newEssayPath)) throw new Error('The Cost of Being Needed is missing from the contents')
+const newEssay = await readFile(resolve(output, nothingSeriousEn, newEssayPath + '.html'), 'utf8')
+if (!newEssay.includes('https://medium.com/@houliang008/the-cost-of-being-needed-47fa3c87e1af')) throw new Error('Medium link is missing from The Cost of Being Needed')
+
 const essayPath = 'editions/selected-v1/ai-and-the-unequal-starting-point'
 if (!nothingSeriousIndex.includes(essayPath)) throw new Error('New Nothing Serious essay is missing from the contents')
 const essay = await readFile(resolve(output, nothingSeriousEn, essayPath + '.html'), 'utf8')

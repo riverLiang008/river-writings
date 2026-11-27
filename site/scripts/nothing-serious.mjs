@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto'
 export async function addNothingSerious(add, site) {
   const directory = resolve(site, '../publication/releases/nothing-serious')
   const collection = JSON.parse(await readFile(resolve(directory, 'collection.json'), 'utf8'))
-  const scope = ['the-cost-of-attention', 'ai-and-the-unequal-starting-point']
+  const scope = ['the-cost-of-attention', 'ai-and-the-unequal-starting-point', 'the-cost-of-being-needed']
   if (collection.id !== 'nothing-serious' || collection.edition !== 'selected-v1' || collection.entries.length !== scope.length || collection.entries.some((entry, i) => entry.id !== scope[i])) throw new Error('Unexpected Nothing Serious release scope')
   const entries = []
   for (const entry of collection.entries) {
